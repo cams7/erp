@@ -1,12 +1,32 @@
+#git rm --cached .classpath
+#git rm -r --cached .settings
+
+#Linux files
+*~
+
+#Windows file
+Thumbs.db
+
+#Maven directories
+log/
+target/
+
+#Eclipse files and directories
+.classpath
+.project
+.settings/
+bin/
+.metadata/
+
 *.class
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
+#Package files
 *.jar
 *.war
 *.ear
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+#Jasper files
+*.jasper
+
+#Arquivos temporários
+temp/
