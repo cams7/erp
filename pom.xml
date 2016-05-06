@@ -11,9 +11,9 @@
 
 	<packaging>pom</packaging>
 		
-	<url>https://github.com/cams7/crud_sys</url>
+	<url>https://github.com/cams7/erp</url>
 	<scm>
-		<connection>scm:git:https://github.com/cams7/crud_sys.git</connection>
+		<connection>scm:git:https://github.com/cams7/erp.git</connection>
 	</scm>
 
 	<properties>

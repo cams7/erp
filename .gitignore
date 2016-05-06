@@ -20,14 +20,14 @@ bin/
 *.class
 
 #Package files
-*.jar
+#*.jar
 *.war
 *.ear
 
 #Jasper files
 *.jasper
 
-#Arquivos temporários
+#Bibliotecas do projeto
 project-libs/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
