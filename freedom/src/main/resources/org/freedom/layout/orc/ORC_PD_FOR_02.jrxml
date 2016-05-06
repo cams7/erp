@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ORC_PD_FOR_02" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="0" bottomMargin="0">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="475"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="CODEMP" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new Integer(3)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODFILIAL" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new Integer(1)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODORC" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new Integer(606)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/robson/workspace/freedom/src/org/freedom/layout/orc/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    ORC.VLRDESCORC,
+    ORC.VLRADICORC,
+    ORC.VLRLIQORC,
+    ORC.CODCLI,
+    C.RAZCLI,
+    ORC.OBSORC,
+    C.INSCCLI,
+    C.CNPJCLI,
+    C.ENDCLI,
+    C.BAIRCLI,
+    C.emailCli,
+    C.NomeCLi,
+    C.NUMCLI,
+    C.CEPCLI,
+    C.DDDCLI,
+    C.FONECLI,
+    orc.dtorc,
+    orc.halt,
+    orc.idusuins,
+    orc.codtran,
+    P.CEPEMP,
+    P.BAIREMP,
+    P.UFEMP,
+    P.ENDEMP,
+    P.FONEEMP,
+    P.WWWEMP,
+    P.EMAILEMP,
+    P.CIDEMP,
+    P.NUMEMP
+
+FROM
+    VDORCAMENTO ORC,
+    VDCLIENTE C,
+    SGEMPRESA P
+
+WHERE
+    ORC.CODEMP=$P{CODEMP} AND
+    ORC.CODFILIAL=$P{CODFILIAL} AND
+    ORC.CODORC=$P{CODORC} AND
+    ORC.CODEMP=P.CODEMP AND
+    ORC.CODEMPCL=C.CODEMP AND
+    ORC.CODFILIALCL=C.CODFILIAL AND
+    ORC.CODCLI=C.CODCLI]]>
+	</queryString>
+	<field name="VLRDESCORC" class="java.math.BigDecimal"/>
+	<field name="VLRADICORC" class="java.math.BigDecimal"/>
+	<field name="VLRLIQORC" class="java.math.BigDecimal"/>
+	<field name="CODCLI" class="java.lang.Integer"/>
+	<field name="RAZCLI" class="java.lang.String"/>
+	<field name="OBSORC" class="java.lang.String"/>
+	<field name="INSCCLI" class="java.lang.String"/>
+	<field name="CNPJCLI" class="java.lang.String"/>
+	<field name="ENDCLI" class="java.lang.String"/>
+	<field name="BAIRCLI" class="java.lang.String"/>
+	<field name="EMAILCLI" class="java.lang.String"/>
+	<field name="NOMECLI" class="java.lang.String"/>
+	<field name="NUMCLI" class="java.lang.Integer"/>
+	<field name="CEPCLI" class="java.lang.String"/>
+	<field name="DDDCLI" class="java.lang.String"/>
+	<field name="FONECLI" class="java.lang.String"/>
+	<field name="DTORC" class="java.sql.Date"/>
+	<field name="HALT" class="java.sql.Time"/>
+	<field name="IDUSUINS" class="java.lang.String"/>
+	<field name="CODTRAN" class="java.lang.Integer"/>
+	<field name="CEPEMP" class="java.lang.String"/>
+	<field name="BAIREMP" class="java.lang.String"/>
+	<field name="UFEMP" class="java.lang.String"/>
+	<field name="ENDEMP" class="java.lang.String"/>
+	<field name="FONEEMP" class="java.lang.String"/>
+	<field name="WWWEMP" class="java.lang.String"/>
+	<field name="EMAILEMP" class="java.lang.String"/>
+	<field name="CIDEMP" class="java.lang.String"/>
+	<field name="NUMEMP" class="java.lang.Integer"/>
+	<variable name="TOTALLIQ" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{VLRLIQORC}]]></variableExpression>
+		<initialValueExpression><![CDATA[new BigDecimal(0)]]></initialValueExpression>
+	</variable>
+	<group name="GROUPTOTAL">
+		<groupExpression><![CDATA[$P{CODORC}]]></groupExpression>
+		<groupHeader>
+			<band splitType="Stretch"/>
+		</groupHeader>
+		<groupFooter>
+			<band splitType="Stretch"/>
+		</groupFooter>
+	</group>
+	<group name="adicionais">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band splitType="Stretch"/>
+		</groupHeader>
+	</group>
+	<group name="descontos">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band splitType="Stretch"/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="535" height="59"/>
+				<subreportParameter name="TITULO"/>
+				<subreportParameter name="CODEMP">
+					<subreportParameterExpression><![CDATA[$P{CODEMP}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="USUARIO"/>
+				<subreportParameter name="LOGOEMP"/>
+				<subreportParameter name="CODFILIAL">
+					<subreportParameterExpression><![CDATA[$P{CODFILIAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "ORC_PD_CAB_02_PROP.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="653" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="98" width="528" height="20"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Verdana" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONCORDO COM OS TERMOS E ITENS EXPRESSOS NA PROPOSTA ACIMA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="534" y="98" width="1" height="41"/>
+			</line>
+			<line>
+				<reportElement x="0" y="97" width="1" height="42"/>
+			</line>
+			<line>
+				<reportElement x="534" y="139" width="1" height="196"/>
+			</line>
+			<line>
+				<reportElement x="0" y="139" width="1" height="196"/>
+			</line>
+			<line>
+				<reportElement x="1" y="139" width="533" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="140" width="147" height="21"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Razão Social da Empresa:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="148" y="141" width="386" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{RAZCLI}.trim()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="205" width="534" height="1"/>
+			</line>
+			<line>
+				<reportElement x="1" y="161" width="534" height="1"/>
+			</line>
+			<line>
+				<reportElement x="1" y="182" width="533" height="1"/>
+			</line>
+			<line>
+				<reportElement x="1" y="271" width="533" height="1"/>
+			</line>
+			<line>
+				<reportElement x="1" y="250" width="533" height="1"/>
+			</line>
+			<line>
+				<reportElement x="2" y="228" width="533" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="163" width="109" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Inscrição Estadual:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="184" width="40" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CNPJ:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="206" width="68" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Endereço:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="229" width="39" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bairro:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="251" width="68" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefone:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="290" width="532" height="1"/>
+			</line>
+			<line>
+				<reportElement x="1" y="313" width="308" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="335" width="535" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="272" width="51" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[E-Mail:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="314" width="51" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Função:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="292" width="39" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="120" width="238" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N da proposta:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="309" y="292" width="1" height="43"/>
+			</line>
+			<line>
+				<reportElement x="409" y="292" width="1" height="43"/>
+			</line>
+			<textField>
+				<reportElement x="410" y="292" width="124" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Assinatura:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="292" width="108" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data:       /    /]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="532" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FORMALIZAÇÃO DE PEDIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="43" width="100" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Para:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="58" width="100" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[AT:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="73" width="100" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana"/>
+				</textElement>
+				<text><![CDATA[Fax:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="48" y="272" width="480" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{EMAILCLI}.trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="48" y="292" width="250" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMECLI}.trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="111" y="163" width="423" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{INSCCLI}.trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="43" y="185" width="331" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CNPJCLI}.trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="68" y="206" width="463" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ENDCLI}.trim() + ", " + $F{NUMCLI}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="51" y="229" width="480" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{BAIRCLI}.trim()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="251" width="463" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["(" + ($F{DDDCLI}.trim()==null?"":$F{DDDCLI}.trim()) + ") " + $F{FONECLI}.substring(0,4)+"-"+$F{FONECLI}.substring(4,12)]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="119" width="533" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="96" width="535" height="1"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="47" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-18" x="3" y="14" width="533" height="15"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ENDEMP}.trim() + ", " +
+$F{NUMEMP}.toString() + " - " +
+$F{CEPEMP}.substring(0,2) + "." +
+$F{CEPEMP}.substring(2,5) + "-" +
+$F{CEPEMP}.substring(5,8) + " - " +
+$F{BAIREMP}.trim() + " - " +
+$F{CIDEMP}.trim() + " - " +
+$F{UFEMP}.trim()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="3" y="30" width="533" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Verdana" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{WWWEMP}.trim() +
+" - Email: " +
+$F{EMAILEMP}.trim() +
+" - " +
+"Telefone: " + "(" +
+$F{FONEEMP}.substring( 1, 4 ) + ") " +
+$F{FONEEMP}.substring( 4, 8 ) + " - " +
+$F{FONEEMP}.substring( 8, 12 )]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="13" width="536" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="256" y="0" width="280" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Verdana" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de "+$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="REL_CRONOGRAMA_01" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="782" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" scriptletClass="net.sf.jasperreports.engine.JRDefaultScriptlet">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA["SC".equals($F{TIPO}) || "CT".equals($F{TIPO})]]></conditionExpression>
+			<style backcolor="#BADFF5"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA["IS".equals($F{TIPO}) || "IC".equals($F{TIPO})]]></conditionExpression>
+			<style backcolor="#CBE9FB"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA["TA".equals($F{TIPO})]]></conditionExpression>
+			<style backcolor="#E9F5FD"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA["ST".equals($F{TIPO})]]></conditionExpression>
+			<style backcolor="#FFFFFF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="LOGOEMP" class="java.lang.Object" isForPrompting="false">
+		<parameterDescription><![CDATA[Logo da Empresa]]></parameterDescription>
+		<defaultValueExpression><![CDATA[null]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FILTROS" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[Filtros utilizados no relatório]]></parameterDescription>
+		<defaultValueExpression><![CDATA[$P{FILTROS}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODFILIAL" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new Integer(1)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODEMP" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new Integer(71)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/bln/workspace/freedom/src/org/freedom/layout/rel/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="RAZEMP" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["SETPOINT TECNOLOGIA EM INFORMÁTICA LTDA."]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IDUSU" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["SYSDBA"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODCONTR" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TITULO" class="java.lang.String"/>
+	<parameter name="totgeral" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[$P{totgeral}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totcob" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[$P{totcob}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select a.dataatendo, a.nomeatend, ct.indice
+, a.codchamado, a.horaatendo, a.horaatendofin
+, a.totalgeral, a.totalcobcli
+, a.obsatendo
+, ct.tipo
+, ( case
+   when idx=1 and ct.tipo in ('SC','SP') then desccontrsc
+  when idx=1 and ct.tipo in ('CT','PJ') then desccontr
+  when idx=2 then ct.descitcontr
+  when idx=3 then ct.desctarefa
+  when idx=4 then ct.desctarefast
+end ) descricao
+, ct.idx, ct.codcontr, ct.codcontrsc
+, ct.coditcontr, ct.codtarefa, ct.codtarefast
+, ct.idx01, ct.idx02, ct.idx03, ct.idx04, ct.idx05
+from vdcontratovw01 ct
+inner join atatendimentovw02 a
+on a.codempct=coalesce(ct.codempsc, ct.codempct)
+and a.codfilialct=coalesce(ct.codfilialsc, ct.codfilialct)
+and a.codcontr=coalesce(ct.codcontrsc, ct.codcontr)
+and a.coditcontr=ct.coditcontr
+and a.codempta=coalesce(ct.codempst, ct.codempta)
+and a.codfilialta=coalesce(ct.codfilialst, ct.codfilialta)
+and a.codtarefa=coalesce(ct.codtarefast, ct.codtarefa)
+where ct.codempct=3 and ct.codfilialct=1 and ct.codcontr=95
+and a.dataatendo between '01.01.2012' and '31.01.2012'
+and ct.codcontrsc is not null
+order by a.dataatendo, a.nomeatend, a.horaatendo, a.horaatendofin]]>
+	</queryString>
+	<field name="DATAATENDO" class="java.sql.Date"/>
+	<field name="NOMEATEND" class="java.lang.String"/>
+	<field name="INDICE" class="java.lang.String"/>
+	<field name="CODCHAMADO" class="java.lang.Integer"/>
+	<field name="HORAATENDO" class="java.sql.Time"/>
+	<field name="HORAATENDOFIN" class="java.sql.Time"/>
+	<field name="TOTALGERAL" class="java.math.BigDecimal"/>
+	<field name="TOTALCOBCLI" class="java.math.BigDecimal"/>
+	<field name="OBSATENDO" class="java.lang.String"/>
+	<field name="TIPO" class="java.lang.String"/>
+	<field name="DESCRICAO" class="java.lang.String"/>
+	<field name="IDX" class="java.lang.Integer"/>
+	<field name="CODCONTR" class="java.lang.Integer"/>
+	<field name="CODCONTRSC" class="java.lang.Integer"/>
+	<field name="CODITCONTR" class="java.lang.Integer"/>
+	<field name="CODTAREFA" class="java.lang.Integer"/>
+	<field name="CODTAREFAST" class="java.lang.Integer"/>
+	<field name="IDX01" class="java.lang.Integer"/>
+	<field name="IDX02" class="java.lang.Integer"/>
+	<field name="IDX03" class="java.lang.Integer"/>
+	<field name="IDX04" class="java.lang.Integer"/>
+	<field name="IDX05" class="java.lang.Integer"/>
+	<variable name="TotalGeral" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{TOTALGERAL}]]></variableExpression>
+		<initialValueExpression><![CDATA[new BigDecimal(0)]]></initialValueExpression>
+	</variable>
+	<variable name="TotalCob" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{TOTALCOBCLI}]]></variableExpression>
+		<initialValueExpression><![CDATA[new BigDecimal(0)]]></initialValueExpression>
+	</variable>
+	<group name="Group">
+		<groupFooter>
+			<band height="17">
+				<line>
+					<reportElement x="0" y="16" width="781" height="1"/>
+				</line>
+				<line>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="354" y="0" width="1" height="17"/>
+				</line>
+				<line>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="474" y="0" width="1" height="17"/>
+				</line>
+				<line>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="311" y="0" width="1" height="17"/>
+				</line>
+				<line>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="397" y="0" width="1" height="17"/>
+				</line>
+				<line>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="428" y="0" width="1" height="17"/>
+				</line>
+				<staticText>
+					<reportElement x="211" y="0" width="100" height="16"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="9"/>
+					</textElement>
+					<text><![CDATA[totais:]]></text>
+				</staticText>
+				<line>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="781" y="0" width="1" height="17"/>
+				</line>
+				<line>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="1" height="17"/>
+				</line>
+				<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement x="312" y="0" width="37" height="14"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{TotalGeral}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+					<reportElement x="356" y="0" width="37" height="14"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$V{TotalCob}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="782" height="1" forecolor="#B0B9BB"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="69" splitType="Stretch">
+			<line>
+				<reportElement key="line-2" x="0" y="0" width="781" height="1"/>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="68"/>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="781" y="0" width="1" height="68"/>
+			</line>
+			<line>
+				<reportElement key="line-3" stretchType="RelativeToBandHeight" x="1" y="68" width="781" height="1"/>
+			</line>
+			<image>
+				<reportElement x="4" y="4" width="80" height="60"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{LOGOEMP}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="4" y="25" width="776" height="25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{FILTROS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="13" width="666" height="13"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{TITULO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<line>
+				<reportElement key="line-3" x="0" y="15" width="781" height="1"/>
+			</line>
+			<line>
+				<reportElement x="781" y="0" width="1" height="31"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="31"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="16" width="50" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="16" width="45" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Índice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="16" width="50" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº chamado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="16" width="45" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="266" y="16" width="45" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fim]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="16" width="42" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[total geral]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="429" y="16" width="45" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="475" y="16" width="305" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="16" width="70" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Atendente]]></text>
+			</staticText>
+			<line>
+				<reportElement x="51" y="15" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="122" y="15" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="168" y="15" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="219" y="15" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="265" y="15" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="311" y="15" width="1" height="16"/>
+			</line>
+			<staticText>
+				<reportElement x="398" y="16" width="30" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Verif.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="397" y="15" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="428" y="16" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement x="474" y="16" width="1" height="15"/>
+			</line>
+			<staticText>
+				<reportElement x="6" y="0" width="63" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apontamentos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="0" width="83" height="15"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cronograma:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="16" width="42" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[total cob.]]></text>
+			</staticText>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="354" y="16" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="31" width="782" height="1" forecolor="#B0B9BB"/>
+			</line>
+			<textField pattern="#,##0.00">
+				<reportElement x="69" y="1" width="25" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$P{totgeral}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="104" y="1" width="30" height="14"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$P{totcob}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="94" y="1" width="10" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" - "]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="397" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="311" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="265" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="219" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="122" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="168" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="51" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="781" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="428" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="354" y="0" width="1" height="17"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="474" y="0" width="1" height="17"/>
+			</line>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="1" y="1" width="50" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{DATAATENDO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="54" y="1" width="65" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMEATEND}.trim()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="123" y="1" width="45" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{INDICE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="169" y="1" width="50" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{CODCHAMADO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="HH.mm" isBlankWhenNull="true">
+				<reportElement x="220" y="1" width="45" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.sql.Time"><![CDATA[$F{HORAATENDO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="HH.mm" isBlankWhenNull="true">
+				<reportElement x="266" y="1" width="45" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.sql.Time"><![CDATA[$F{HORAATENDOFIN}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="355" y="1" width="37" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{TOTALCOBCLI}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="312" y="1" width="37" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{TOTALGERAL}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="478" y="1" width="301" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{OBSATENDO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="16" width="782" height="1" forecolor="#B0B9BB"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement key="textField" positionType="Float" mode="Transparent" x="2" y="1" width="216" height="12" forecolor="#0000FF" backcolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle" rotation="None" lineSpacing="Single" markup="none">
+					<font fontName="Georgia" size="7" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="CP1252" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Powered by Freedom-ERP - www.freedom.org.br]]></text>
+			</staticText>
+			<line>
+				<reportElement key="line-9" positionType="Float" mode="Opaque" x="1" y="1" width="779" height="1" forecolor="#000000" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="683" y="2" width="80" height="12"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="763" y="2" width="17" height="11"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

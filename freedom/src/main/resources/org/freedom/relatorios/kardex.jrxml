@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="kardex" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="LOGOEMP" class="java.lang.Object"/>
+	<parameter name="RAZEMP" class="java.lang.String"/>
+	<parameter name="USUARIO" class="java.lang.String"/>
+	<parameter name="TITULO" class="java.lang.String"/>
+	<parameter name="FILTROS" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     MP."DTMOVPROD",
+     TM."TIPOMOV",
+     MP."CODNAT",
+     MP."DOCMOVPROD",
+     MP."CODALMOX",
+     MP."CODLOTE",
+     MP."QTDMOVPROD",
+     MP."PRECOMOVPROD",
+     MP."ESTOQMOVPROD",
+     MP."SLDMOVPRODAX",
+     MP."CUSTOMPMMOVPRODAX",
+     MP."SLDMOVPROD",
+     MP."CUSTOMPMMOVPROD",
+     MP."CODMOVPROD"
+FROM
+     "EQMOVPROD" MP INNER JOIN "EQTIPOMOV" TM ON MP."CODEMPTM" = TM."CODEMP"
+     AND MP."CODFILIALTM" = TM."CODFILIAL"
+     AND MP."CODTIPOMOV" = TM."CODTIPOMOV"
+WHERE
+ MP.CODEMPPD = 1
+ AND MP.CODFILIALPD = 1
+ AND MP.CODPROD = 2
+ AND MP.CODEMPAX = 1
+ AND MP.CODFILIALAX = 1
+ AND MP.CODALMOX = 2
+ AND MP.ESTOQMOVPROD = 'S'
+ORDER BY
+     DTMOVPROD ASC,
+     CODMOVPROD ASC]]>
+	</queryString>
+	<field name="DTMOVPROD" class="java.sql.Date"/>
+	<field name="TIPOMOV" class="java.lang.String"/>
+	<field name="CODNAT" class="java.lang.String"/>
+	<field name="DOCMOVPROD" class="java.lang.Integer"/>
+	<field name="CODALMOX" class="java.lang.Integer"/>
+	<field name="CODLOTE" class="java.lang.String"/>
+	<field name="QTDMOVPROD" class="java.math.BigDecimal"/>
+	<field name="PRECOMOVPROD" class="java.math.BigDecimal"/>
+	<field name="ESTOQMOVPROD" class="java.lang.String"/>
+	<field name="SLDMOVPRODAX" class="java.math.BigDecimal"/>
+	<field name="CUSTOMPMMOVPRODAX" class="java.math.BigDecimal"/>
+	<field name="SLDMOVPROD" class="java.math.BigDecimal"/>
+	<field name="CUSTOMPMMOVPROD" class="java.math.BigDecimal"/>
+	<field name="CODMOVPROD" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement x="265" y="2" width="272" height="35"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kardex de produtos]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="616" y="2" width="186" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="10" y="12" width="93" height="64"/>
+				<imageExpression class="java.awt.Image"><![CDATA[$P{LOGOEMP}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="113" y="60" width="264" height="16"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Emitido por :"+$P{USUARIO}.toString()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="113" y="38" width="264" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{RAZEMP}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="113" y="0" width="623" height="31"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{FILTROS}.toString()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="39" width="802" height="1"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="93" y="0" width="58" height="12"/>
+				<textElement/>
+				<text><![CDATA[Movimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="0" width="47" height="12"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[CFOP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="0" width="62" height="12"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="0" width="70" height="12"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Almoxarifado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="93" height="12"/>
+				<textElement/>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="0" width="57" height="12"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Lote]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="0" width="73" height="12"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="461" y="0" width="76" height="12"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Valor unit.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="537" y="0" width="79" height="12"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Estoque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="616" y="0" width="89" height="12"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Custo MPM]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="21" width="802" height="1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="93" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{DTMOVPROD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="0" width="58" height="14"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{TIPOMOV}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="151" y="0" width="47" height="14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CODNAT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="199" y="0" width="62" height="14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{DOCMOVPROD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="261" y="0" width="70" height="14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{CODALMOX}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="16" width="802" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="331" y="0" width="57" height="14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CODLOTE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="388" y="0" width="73" height="14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{QTDMOVPROD}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="461" y="0" width="76" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{PRECOMOVPROD}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="537" y="0" width="79" height="14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{SLDMOVPRODAX}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="616" y="0" width="89" height="14"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{CUSTOMPMMOVPRODAX}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="802" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="682" y="1" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="1" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

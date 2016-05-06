@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ORC_PD_PROPOSTA_02" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="662"/>
+	<style name="Row" mode="Transparent" forecolor="#FFFFFF" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#DDE4F6" fill="Solid"/>
+		</conditionalStyle>
+	</style>
+	<style name="SubTitle" mode="Transparent" forecolor="#FFFFFF" backcolor="#FFFFFF" fontName="Georgia" fontSize="18" isBold="false" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#3D4971" fontName="Georgia"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="CODEMP" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new Integer(3)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODFILIAL" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new Integer(1)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODORC" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new Integer(606)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODFILIALPF" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new Integer(1)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/robson/workspace/freedom/src/org/freedom/layout/orc/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT O.CODEMPCL, O.CODFILIALCL, O.CODCLI, O.OBSORC, O.PRAZOENTORC, O.PRAZOENTORC, C.CIDCLI, C.ENDCLI,
+C.FONECLI, C.BAIRCLI, C.UFCLI, DDDCLI, C.NUMCLI, C.RAZCLI, O.CODORC, O.DTORC,
+O.DTVENCORC, PP.DESCPLANOPAG, E.RAZEMP,C.CONTCLI, P1.USANOMEVENDORC, C.CNPJCLI,
+(CASE WHEN P1.USANOMEVENDORC='S' THEN V.NOMEVEND ELSE E.RAZEMP END) NOMEASS,
+(CASE WHEN P1.USAIMGASSORC='S' THEN COALESCE(V.IMGASSVEND,P1.IMGASSORC) END) IMGASS,
+CV.CODCONV, CV.NOMECONV, O.CODTPCONV, TC.DESCTPCONV,E.ENDEMP,E.NUMEMP,E.FONEEMP,E.CEPEMP,
+E.BAIREMP,E.CIDEMP,E.UFEMP,V.NOMEVEND, E.WWWEmp, E.EMAILEMP,E.CNPJEMP, M.NOMEMUNIC,
+IT.CODITORC, IT.QTDITORC, IT.PRECOITORC, IT.VLRLIQITORC, IT.VLRDESCITORC,
+P.DESCPROD, P.CODUNID, O.VLRADICORC, O.VLRPRODORC, O.VLRLIQORC, O.VLRDESCORC
+FROM  VDCLIENTE C, FNPLANOPAG PP, SGEMPRESA E, SGFILIAL F, SGMUNICIPIO M,
+SGPREFERE1 P1, VDVENDEDOR V, EQPRODUTO P, VDITORCAMENTO IT, VDORCAMENTO O
+LEFT OUTER JOIN ATCONVENIADO CV ON
+O.CODEMPCV=CV.CODEMP AND O.CODFILIALCV=CV.CODFILIAL AND O.CODCONV=CV.CODCONV
+LEFT OUTER JOIN ATTIPOCONV TC ON
+TC.CODEMP=O.CODEMPTC AND TC.CODFILIAL=O.CODFILIALTC AND TC.CODTPCONV=O.CODTPCONV
+WHERE O.CODEMP=$P{CODEMP} AND O.CODFILIAL=$P{CODFILIAL} AND O.CODORC=$P{CODORC} AND
+C.CODEMP=O.CODEMPCL AND C.CODFILIAL=O.CODFILIALCL AND C.CODCLI=O.CODCLI AND
+PP.CODEMP=O.CODEMPPG AND PP.CODFILIAL=O.CODFILIALPG AND
+PP.CODPLANOPAG=O.CODPLANOPAG AND E.CODEMP=O.CODEMP AND
+V.CODEMP=O.CODEMPVD AND V.CODFILIAL=O.CODFILIALVD AND V.CODVEND=O.CODVEND AND
+P1.CODEMP=O.CODEMP AND P1.CODFILIAL=$P{CODFILIALPF} AND
+F.CODEMP=E.CODEMP AND F.CODFILIAL=$P{CODFILIAL} AND
+M.CODPAIS=F.CODPAIS AND M.SIGLAUF=F.SIGLAUF AND M.CODMUNIC=F.CODMUNIC AND
+IT.CODEMP=O.CODEMP AND IT.CODFILIAL=O.CODFILIAL AND IT.CODORC=O.CODORC AND
+P.CODEMP=IT.CODEMPPD AND P.CODFILIAL=IT.CODFILIALPD AND P.CODPROD=IT.CODPROD
+ORDER BY IT.CODITORC]]>
+	</queryString>
+	<field name="CODEMPCL" class="java.lang.Integer"/>
+	<field name="CODFILIALCL" class="java.lang.Integer"/>
+	<field name="CODCLI" class="java.lang.Integer"/>
+	<field name="OBSORC" class="java.lang.String"/>
+	<field name="PRAZOENTORC" class="java.lang.Integer"/>
+	<field name="CIDCLI" class="java.lang.String"/>
+	<field name="ENDCLI" class="java.lang.String"/>
+	<field name="FONECLI" class="java.lang.String"/>
+	<field name="BAIRCLI" class="java.lang.String"/>
+	<field name="UFCLI" class="java.lang.String"/>
+	<field name="DDDCLI" class="java.lang.String"/>
+	<field name="NUMCLI" class="java.lang.Integer"/>
+	<field name="RAZCLI" class="java.lang.String"/>
+	<field name="CODORC" class="java.lang.Integer"/>
+	<field name="DTORC" class="java.sql.Date"/>
+	<field name="DTVENCORC" class="java.sql.Date"/>
+	<field name="DESCPLANOPAG" class="java.lang.String"/>
+	<field name="RAZEMP" class="java.lang.String"/>
+	<field name="CONTCLI" class="java.lang.String"/>
+	<field name="USANOMEVENDORC" class="java.lang.String"/>
+	<field name="CNPJCLI" class="java.lang.String"/>
+	<field name="NOMEASS" class="java.lang.String"/>
+	<field name="IMGASS" class="java.lang.Object"/>
+	<field name="CODCONV" class="java.lang.Integer"/>
+	<field name="NOMECONV" class="java.lang.String"/>
+	<field name="CODTPCONV" class="java.lang.Integer"/>
+	<field name="DESCTPCONV" class="java.lang.String"/>
+	<field name="ENDEMP" class="java.lang.String"/>
+	<field name="NUMEMP" class="java.lang.Integer"/>
+	<field name="FONEEMP" class="java.lang.String"/>
+	<field name="CEPEMP" class="java.lang.String"/>
+	<field name="BAIREMP" class="java.lang.String"/>
+	<field name="CIDEMP" class="java.lang.String"/>
+	<field name="UFEMP" class="java.lang.String"/>
+	<field name="NOMEVEND" class="java.lang.String"/>
+	<field name="WWWEMP" class="java.lang.String"/>
+	<field name="EMAILEMP" class="java.lang.String"/>
+	<field name="CNPJEMP" class="java.lang.String"/>
+	<field name="NOMEMUNIC" class="java.lang.String"/>
+	<field name="CODITORC" class="java.lang.Integer"/>
+	<field name="QTDITORC" class="java.math.BigDecimal"/>
+	<field name="PRECOITORC" class="java.math.BigDecimal"/>
+	<field name="VLRLIQITORC" class="java.math.BigDecimal"/>
+	<field name="VLRDESCITORC" class="java.math.BigDecimal"/>
+	<field name="DESCPROD" class="java.lang.String"/>
+	<field name="CODUNID" class="java.lang.String"/>
+	<field name="VLRADICORC" class="java.math.BigDecimal"/>
+	<field name="VLRPRODORC" class="java.math.BigDecimal"/>
+	<field name="VLRLIQORC" class="java.math.BigDecimal"/>
+	<field name="VLRDESCORC" class="java.math.BigDecimal"/>
+	<group name="GERAL">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="11"/>
+		</groupFooter>
+	</group>
+	<group name="TOTAL">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="10"/>
+		</groupFooter>
+	</group>
+	<group name="ITENS" isReprintHeaderOnEachPage="true">
+		<groupHeader>
+			<band height="49">
+				<frame>
+					<reportElement style="SubTitle" mode="Opaque" x="0" y="28" width="555" height="21" forecolor="#3D4971"/>
+					<staticText>
+						<reportElement key="staticText-1" style="SubTitle" mode="Opaque" x="2" y="1" width="27" height="18" forecolor="#FFFFFF" backcolor="#3D4971"/>
+						<box>
+							<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Georgia" size="8" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Item]]></text>
+					</staticText>
+					<staticText>
+						<reportElement key="staticText-3" style="SubTitle" mode="Opaque" x="32" y="1" width="260" height="18" forecolor="#FFFFFF" backcolor="#3D4971"/>
+						<box>
+							<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textElement textAlignment="Left" verticalAlignment="Middle">
+							<font fontName="Georgia" size="8" isBold="true"/>
+						</textElement>
+						<text><![CDATA[   Descrição]]></text>
+					</staticText>
+					<staticText>
+						<reportElement key="staticText-4" style="SubTitle" mode="Opaque" x="329" y="1" width="62" height="18" forecolor="#FFFFFF" backcolor="#3D4971"/>
+						<box>
+							<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Georgia" size="8" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Quantidade]]></text>
+					</staticText>
+					<staticText>
+						<reportElement key="staticText-5" style="SubTitle" mode="Opaque" x="393" y="1" width="40" height="18" forecolor="#FFFFFF" backcolor="#3D4971"/>
+						<box>
+							<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Georgia" size="8" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Valor]]></text>
+					</staticText>
+					<staticText>
+						<reportElement key="staticText-6" style="SubTitle" mode="Opaque" x="436" y="1" width="53" height="18" forecolor="#FFFFFF" backcolor="#3D4971"/>
+						<box>
+							<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Georgia" size="8" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Desconto]]></text>
+					</staticText>
+					<staticText>
+						<reportElement key="staticText-7" style="SubTitle" mode="Opaque" x="493" y="1" width="59" height="18" forecolor="#FFFFFF" backcolor="#3D4971"/>
+						<box>
+							<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+							<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textElement textAlignment="Center" verticalAlignment="Middle">
+							<font fontName="Georgia" size="8" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Sub-total]]></text>
+					</staticText>
+					<line>
+						<reportElement key="line-1" x="0" y="0" width="555" height="1"/>
+						<graphicElement>
+							<pen lineWidth="1.0" lineStyle="Solid"/>
+						</graphicElement>
+					</line>
+					<line>
+						<reportElement key="line-2" positionType="FixRelativeToBottom" x="0" y="20" width="555" height="1"/>
+						<graphicElement>
+							<pen lineWidth="1.0" lineStyle="Solid"/>
+						</graphicElement>
+					</line>
+					<line>
+						<reportElement key="line-3" x="0" y="0" width="1" height="20"/>
+					</line>
+					<line>
+						<reportElement key="line-5" x="30" y="0" width="1" height="20"/>
+					</line>
+					<line>
+						<reportElement key="line-7" x="327" y="0" width="1" height="20"/>
+						<graphicElement>
+							<pen lineWidth="1.0" lineStyle="Solid"/>
+						</graphicElement>
+					</line>
+					<line>
+						<reportElement key="line-8" x="392" y="1" width="1" height="20"/>
+						<graphicElement>
+							<pen lineWidth="1.0" lineStyle="Solid"/>
+						</graphicElement>
+					</line>
+					<line>
+						<reportElement key="line-10" x="491" y="1" width="1" height="20"/>
+						<graphicElement>
+							<pen lineWidth="1.0" lineStyle="Solid"/>
+						</graphicElement>
+					</line>
+					<line>
+						<reportElement key="line-9" x="434" y="0" width="1" height="20"/>
+						<graphicElement>
+							<pen lineWidth="1.0" lineStyle="Solid"/>
+						</graphicElement>
+					</line>
+					<line>
+						<reportElement key="line-34" stretchType="RelativeToBandHeight" x="554" y="0" width="1" height="20"/>
+						<graphicElement>
+							<pen lineWidth="1.0" lineStyle="Solid"/>
+						</graphicElement>
+					</line>
+				</frame>
+				<staticText>
+					<reportElement key="staticText-1" x="0" y="3" width="235" height="20"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Georgia" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Investimento]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="71">
+				<staticText>
+					<reportElement key="staticText-11" x="400" y="1" width="70" height="15"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Georgia" size="8" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[ Sub-total]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-9" x="400" y="17" width="70" height="15"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Georgia" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[- Desconto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-10" x="400" y="33" width="70" height="15"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Georgia" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[+ Acréscimo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-8" x="400" y="49" width="70" height="15"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Georgia" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[= Total liquido]]></text>
+				</staticText>
+				<line>
+					<reportElement key="line-29" positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-29" positionType="FixRelativeToBottom" x="392" y="16" width="162" height="1"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-29" positionType="FixRelativeToBottom" x="392" y="32" width="162" height="1"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-29" positionType="FixRelativeToBottom" x="392" y="48" width="162" height="1"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-29" positionType="FixRelativeToBottom" x="0" y="64" width="555" height="1"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-12" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="64"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-12" stretchType="RelativeToBandHeight" x="554" y="0" width="1" height="64"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-12" stretchType="RelativeToBandHeight" x="392" y="0" width="1" height="64"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-12" stretchType="RelativeToBandHeight" x="491" y="0" width="1" height="64"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement key="staticText-11" x="2" y="2" width="388" height="61"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Georgia" size="16" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[TOTAIS]]></text>
+				</staticText>
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false">
+					<reportElement key="textField-13" x="493" y="1" width="59" height="15"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{VLRPRODORC}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false">
+					<reportElement key="textField-11" x="493" y="17" width="59" height="15"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{VLRDESCORC}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false">
+					<reportElement key="textField-12" x="493" y="33" width="59" height="15"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{VLRADICORC}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false">
+					<reportElement key="textField-8" x="493" y="49" width="59" height="15"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{VLRLIQORC}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="66" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="52"/>
+				<subreportParameter name="CODEMP">
+					<subreportParameterExpression><![CDATA[$F{CODEMPCL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CODFILIAL">
+					<subreportParameterExpression><![CDATA[$F{CODFILIALCL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CODCLI">
+					<subreportParameterExpression><![CDATA[$F{CODCLI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "ORD_PD_PROPOSTA_02_TIT.jasper"]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="53" width="555" height="1" forecolor="#CCCCCC"/>
+			</line>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="55" width="550" height="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Georgia" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="63" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="550" height="63"/>
+				<subreportParameter name="CODEMP">
+					<subreportParameterExpression><![CDATA[$P{CODEMP}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CODFILIAL">
+					<subreportParameterExpression><![CDATA[$P{CODFILIAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "ORD_PD_PROPOSTA_02_LOGO.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="21"/>
+				<line>
+					<reportElement key="line-29" positionType="FixRelativeToBottom" x="0" y="20" width="555" height="1"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-21" stretchType="RelativeToBandHeight" x="392" y="1" width="1" height="19"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-20" stretchType="RelativeToBandHeight" x="327" y="1" width="1" height="19"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-12" stretchType="RelativeToBandHeight" x="0" y="1" width="1" height="19"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-11" stretchType="RelativeToBandHeight" x="30" y="1" width="1" height="19"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<textField pattern="#,##0.00" isBlankWhenNull="false">
+					<reportElement key="textField-5" x="392" y="2" width="40" height="16"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Georgia" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{PRECOITORC}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+					<reportElement key="textField-3" stretchType="RelativeToTallestObject" x="35" y="2" width="277" height="16"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Georgia" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{DESCPROD}]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00" isBlankWhenNull="false">
+					<reportElement key="textField-4" x="329" y="2" width="38" height="16"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Georgia" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{QTDITORC}]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement key="textField-10" x="370" y="2" width="20" height="16"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Georgia" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{CODUNID}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="false">
+					<reportElement key="textField-6" x="436" y="2" width="53" height="16"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Georgia" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{VLRDESCITORC}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00" isBlankWhenNull="false">
+					<reportElement key="textField-7" x="493" y="2" width="59" height="16"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Georgia" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{VLRLIQITORC}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement key="line-22" stretchType="RelativeToBandHeight" x="434" y="1" width="1" height="19"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-23" stretchType="RelativeToBandHeight" x="491" y="1" width="1" height="20"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-34" stretchType="RelativeToBandHeight" x="554" y="1" width="1" height="20"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-29" positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</graphicElement>
+				</line>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-1" x="2" y="2" width="27" height="16"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Georgia" size="8"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Integer"><![CDATA[$F{CODITORC}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="550" height="30"/>
+				<subreportParameter name="CODFILIAL">
+					<subreportParameterExpression><![CDATA[$P{CODFILIAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="PAGE_NUMBER">
+					<subreportParameterExpression><![CDATA[$V{PAGE_NUMBER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CODEMP">
+					<subreportParameterExpression><![CDATA[$P{CODEMP}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "ORD_PD_PROPOSTA_02_ROD.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

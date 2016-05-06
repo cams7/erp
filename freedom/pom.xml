@@ -1,0 +1,164 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>br.com.cams7.erp</groupId>	
+		<version>1.2.6.5</version>
+		<artifactId>freedom-erp</artifactId>
+	</parent>
+
+	<artifactId>freedom</artifactId>
+
+	<name>Freedom STD</name>
+	<description></description>
+
+	<packaging>jar</packaging>
+
+	<properties>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>			
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>	
+		<dependency>
+			<groupId>br.com.cams7.erp</groupId>
+			<artifactId>freedom-infra</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>br.com.cams7.erp</groupId>
+			<artifactId>freedom-nfe</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>br.com.cams7.erp</groupId>
+			<artifactId>freedom-ecf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>br.com.cams7.erp</groupId>
+			<artifactId>freedom-fw1</artifactId>
+		</dependency>
+		
+		<!--dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mailapi</artifactId>
+		</dependency-->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>mailapi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>smtp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>pop3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>imap</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>dsn</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml</groupId>
+			<artifactId>saaj-impl</artifactId>
+		</dependency>
+		
+		<!--dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+		</dependency-->
+		<dependency>
+			<groupId>jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+		</dependency>
+		<!--dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports-fonts</artifactId>
+		</dependency-->
+		
+		<dependency>
+			<groupId>org.firebirdsql.jdbc</groupId>
+			<artifactId>jaybird</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.squirrel-sql.thirdparty-non-maven</groupId>
+			<artifactId>ilf-gpl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>comm</groupId>
+			<artifactId>comm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.barbecue</groupId>
+			<artifactId>barbecue</artifactId>
+		</dependency>		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.nachocalendar</groupId>
+			<artifactId>nachocalendar</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>bizcal</groupId>
+			<artifactId>bizcal</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>info.clearthought</groupId>
+			<artifactId>table-layout</artifactId>
+		</dependency>	
+		<dependency>
+			<groupId>org.codehaus.castor</groupId>
+			<artifactId>castor</artifactId>
+		</dependency>	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.squirrel-sql.thirdparty-non-maven</groupId>
+			<artifactId>metouia</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.birosoft.liguid</groupId>
+			<artifactId>liquidlnf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.beeger.squareness</groupId>
+			<artifactId>squareness</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jdt.core.compiler</groupId>
+			<artifactId>jdt-compiler</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>	
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>org.freedom.modulos.std.FreedomSTD</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+
+
+

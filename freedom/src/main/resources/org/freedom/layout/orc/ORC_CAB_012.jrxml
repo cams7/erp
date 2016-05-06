@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ORC_PD_CAB" pageWidth="566" pageHeight="90" orientation="Landscape" columnWidth="566" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="TITULO" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[Titulo do relatório]]></parameterDescription>
+		<defaultValueExpression><![CDATA["RELATÓRIO"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODEMP" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[new Integer(4)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="USUARIO" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["Usuario vazio"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LOGOEMP" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="CODFILIAL" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT EM.RAZEMP,FI.FONEFILIAL, EM.FONEEMP, FI.FAXFILIAL FAXEMP,
+(CASE WHEN I.CODIMG IS NULL THEN EM.FOTOEMP ELSE I.BINIMG END) FOTOEMP,
+FI.CNPJFILIAL CNPJEMP, FI.EnDFILIAL, FI.CEPFILIAL, FI.NUMFILIAL,FI.UFFILIAL, FI.EMAILFILIAL , FI.bairfilial,  FI.DDDFILIAL, FI.FONEFILIAL,FI.CIDFILIAL, FI.WWWFILIAL, FI.RAZFILIAL
+FROM SGEMPRESA EM, SGFILIAL FI
+LEFT OUTER JOIN SGPREFERE1 P
+ON P.CODEMP=FI.CODEMP AND P.CODFILIAL=FI.CODFILIAL
+LEFT OUTER JOIN SGIMAGEM I
+ON I.CODEMP=P.CODEMPIG AND I.CODFILIAL=P.CODFILIALIG AND I.CODIMG=P.CODIMG
+WHERE EM.CODEMP=$P{CODEMP} AND FI.CODFILIAL=$P{CODFILIAL} AND FI.CODEMP=EM.CODEMP]]>
+	</queryString>
+	<field name="RAZEMP" class="java.lang.String"/>
+	<field name="FONEFILIAL" class="java.lang.String"/>
+	<field name="FONEEMP" class="java.lang.String"/>
+	<field name="FAXEMP" class="java.lang.String"/>
+	<field name="FOTOEMP" class="java.io.InputStream"/>
+	<field name="CNPJEMP" class="java.lang.String"/>
+	<field name="ENDFILIAL" class="java.lang.String"/>
+	<field name="CEPFILIAL" class="java.lang.String"/>
+	<field name="NUMFILIAL" class="java.lang.Integer"/>
+	<field name="UFFILIAL" class="java.lang.String"/>
+	<field name="EMAILFILIAL" class="java.lang.String"/>
+	<field name="BAIRFILIAL" class="java.lang.String"/>
+	<field name="DDDFILIAL" class="java.lang.String"/>
+	<field name="CIDFILIAL" class="java.lang.String"/>
+	<field name="WWWFILIAL" class="java.lang.String"/>
+	<field name="RAZFILIAL" class="java.lang.String"/>
+	<variable name="CNPJEMPF" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[( $F{CNPJEMP} != null && $F{CNPJEMP}.length()>12 ?
+$F{CNPJEMP}.substring(0,2) + "." + $F{CNPJEMP}.substring(2,5) + "." + $F{CNPJEMP}.substring(5,8) + "/" +
+$F{CNPJEMP}.substring(8,12) + "-" + $F{CNPJEMP}.substring(12) : "" )]]></variableExpression>
+	</variable>
+	<variable name="FOTOEMP_1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{FOTOEMP}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="60" splitType="Stretch">
+			<image>
+				<reportElement x="-1" y="0" width="531" height="60"/>
+				<imageExpression class="java.io.InputStream"><![CDATA[$F{FOTOEMP}]]></imageExpression>
+			</image>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="Empresa" mode="Transparent" x="158" y="7" width="365" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{RAZFILIAL}.trim()!=null?$F{RAZFILIAL}.trim():"" + " "]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="158" y="29" width="365" height="13"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ENDFILIAL}.trim()+ ", " + $F{NUMFILIAL} + " - " + $F{BAIRFILIAL}.trim() + " - CEP: " + $F{CEPFILIAL}.substring(0,5)+"-"+$F{CEPFILIAL}.substring(5,8) + " TEL: " + "(" + ($F{DDDFILIAL}.trim()==null?"":$F{DDDFILIAL}.trim()) + ") " + $F{FONEFILIAL}.substring(0,4)+"-"+$F{FONEFILIAL}.substring(4,12)]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Prevent"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

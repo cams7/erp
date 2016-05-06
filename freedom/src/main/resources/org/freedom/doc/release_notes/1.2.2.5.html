@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><style type="text/css">
+<!--
+.style3 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small; }
+.style7 {font-family: Verdana, Arial, Helvetica, sans-serif; font-size: small; color: #FFFFFF; }
+-->
+  </style><title></title></head><body>
+
+Versão 1.2.2.4
+<table style="width: 677px;" border="1" cellpadding="2" cellspacing="0">
+
+<tr>
+		<th style="width: 8%;" bgcolor="#999999"><span class="style7">Data</span></th>
+		<th style="width: 8%;" bgcolor="#999999"><span class="style7">Tipo</span></th>
+		<th style="width: 42%;" bgcolor="#999999"><span class="style7">Problema/Necessidade</span></th>
+		<th style="width: 42%;" bgcolor="#999999"><span class="style7">Solução</span></th>
+	</tr>
+        <tr>
+		<th style="width: 8%;" bgcolor="#999999"><span class="style7"></span></th>
+		<th style="width: 8%;" bgcolor="#999999"><span class="style7"></span></th>
+		<th style="width: 42%;" bgcolor="#999999"><span class="style7"></span></th>
+		<th style="width: 42%;" bgcolor="#999999">
+            <span class="style7"></span><span class="style7"></span></th>
+	</tr>
+	<tr>
+		<td style="vertical-align: top; font-family: monospace;">16/06/2010<br></td>
+		<td></td>
+		<td style="vertical-align: top; font-family: monospace;">Erro na montagem do grid de vendas e ítens de vendas na tela de Consulta de Clientes.</td>
+		<td style="vertical-align: top; font-family: monospace;">Uso da função "coalesce" nas consultas de vendas e ítens de vendas.</td>
+	</tr>
+	<tr>
+		<td style="vertical-align: top; font-family: monospace;">17/06/2010</td>
+		<td></td>
+		<td style="vertical-align: top; font-family: monospace;">Implementações no driver da balança hidrostática BCI 10000<br></td>
+		<td style="vertical-align: top; font-family: monospace;">Acerto no numero de casas decimais do campo peso.<br></td>
+	</tr>
+	<tr>
+		<td style="vertical-align: top; font-family: monospace;">17/06/2010<br></td>
+		<td></td>
+		<td style="vertical-align: top; font-family: monospace;">Erro na tela de venda em bases de dados que possuem vendas de PDV e normais. Quando há vendas de tipos diferentes com o mesmo código o sistema realizava o update nas duas.<br></td>
+		<td style="vertical-align: top; font-family: monospace;">Anexado o campo txtTipoVenda no listacampos da venda com o flag de PK.<br></td>
+	</tr>
+
+</tbody>
+</table>
+
+Versão 1.2.2.5
+
+<table style="width: 677px;" border="1" cellpadding="2" cellspacing="0">
+
+<tbody>
+	
+	<tr>
+		<th style="width: 8%;" bgcolor="#999999"><span class="style7">Data</span></th>
+		<th style="width: 8%;" bgcolor="#999999"><span class="style7">Tipo</span></th>
+		<th style="width: 42%;" bgcolor="#999999"><span class="style7">Problema/Necessidade</span></th>
+		<th style="width: 42%;" bgcolor="#999999"><span class="style7">Solução</span></th>
+	</tr>
+
+	<tr>
+		<td>21/06/2010</td>
+		<td>Novidade</td>
+		<td>Implementação na tela de painel de controle de <br>
+&nbsp;recebimento de mercadorias.</td>
+		<td>Criacao de novos filtros e imagens de referencia</td>
+	</tr>
+	<tr>
+		<td>21/06/2010</td>
+		<td>Erro</td>
+		<td>Erro em grids com valores nulos.</td>
+		<td>Implementação na classe JTablePad&nbsp; inserindo valor branco "" <br>
+quando o método setValor() contiver um valor nulo.</td>
+	</tr>
+	<tr>
+		<td>21/06/2010</td>
+		<td>Novidade</td>
+		<td>Permitir alteração do preco do item <br>
+de compra na tela de busca de pedidos.</td>
+		<td>Liberacao do grid para edição; <br>
+Alteração na procedure de geração de compra <br>
+a partir de pedido, incluindo parímetro<br>
+&nbsp;para pegar o preço do grid.<br>
+		</td>
+	</tr>
+	<tr>
+		<td>21/06/2010</td>
+		<td>Novidade</td>
+      <td>Campo CNAE no cadastro de clientes.</td>
+      <td>Criação de tabela SGCNAE e FK para o cadastro de clientes;</td>
+    </tr>
+    <tr>
+      <td>21/06/2010</td>
+      <td>Novidade</td>
+      <td>Script para população da tabela SGCNAE</td>
+      <td>dados/sql/implantacao/16_insert_sgcnae.sql</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">22/06/2010<br>
+      </td>
+      <td style="vertical-align: top;">Erro<br>
+      </td>
+      <td style="vertical-align: top;">Funcionamento inadequado da tela
+de bloqueio/desbloqueio de compras.<br>
+      </td>
+      <td style="vertical-align: top;">Implementação na chamada da
+procedure CPBLOQCOMPRASP, passando o parâmetro do código<br>
+da filial corretamente.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">22/06/2010<br>
+      </td>
+      <td style="vertical-align: top;">Erro<br>
+      </td>
+      <td style="vertical-align: top;">Problema ao utilizar a aba de
+baixa de contas&nbsp; a pagar (Erro multiplas rows in single select)<br>
+      </td>
+      <td style="vertical-align: top;">Implementação na query de
+seleção das parcelas do título. A amarração do título com o centro de
+custo não utilizava o ano de referência do centro de custo.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">22/06/2010<br>
+      </td>
+      <td style="vertical-align: top;">Erro<br>
+      </td>
+      <td style="vertical-align: top;">Problema ao habilitar multiplos
+almoxarifados em empresa com <br>
+multiplas filiais. <br>
+A dialog para seleção do almoxarifado não abria em uma das filiais.<br>
+      </td>
+      <td style="vertical-align: top;">Implementação na query da dialog
+DLBuscaProd para parametrização correta do campo código da filial.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">22/06/2010<br>
+      </td>
+      <td style="vertical-align: top;">Erro<br>
+      </td>
+      <td style="vertical-align: top;">Falha no reprocessamento de
+estoque em empresas com multiplas filiais com produtos compartilhados.<br>
+      </td>
+      <td style="vertical-align: top;">Implementação no mecanismo de
+reprocessamento para parametrização correta do campo código da filial.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">23/06/2010<br>
+      </td>
+      <td style="vertical-align: top;">Novidade<br>
+      </td>
+      <td style="vertical-align: top;">Tela para manutenção da tabela
+SGCNAE<br>
+      </td>
+      <td style="vertical-align: top;">Criação de formulário em:
+Arquivo/Tabelas/Clientes/Atividades CNAE<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">23/06/2010<br>
+      </td>
+      <td style="vertical-align: top;">Novidade<br>
+      </td>
+      <td style="vertical-align: top;">Exibição do release notes da
+versão na tela de Ajuda/Sobre<br>
+      </td>
+      <td style="vertical-align: top;">Implementação no layout da tela
+e leitura do arquivo html.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span class="style3">23/06/2010</span></td>
+      <td style="vertical-align: top;"><span class="style3">Erro</span></td>
+      <td style="vertical-align: top;"><span class="style3">Erro ao
+gerar orçamento a partir de ordem de serviço, quando logado utilizando
+usuário diferente do sysdba.</span></td>
+      <td style="vertical-align: top;"><span class="style3">Inclusão de
+grant para o grupo ADM na procedure vdadicitorcrecmercsp.</span></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span class="style3">23/06/2010</span></td>
+      <td style="vertical-align: top;">Novidade<br>
+      </td>
+      <td style="vertical-align: top;"><span class="style3">Ao gerar
+orçamento a partir de ordem de serviço não é possível detectar qual o
+orçamento gerado.</span></td>
+      <td style="vertical-align: top;"><span class="style3">Inclusão de
+coluna no grid informando o código do orçamento gerado;<br>
+Abertura automática da tela de orçamento após geração;<br>
+Abertura do orçamento no botão orçamento da tela de painel de controle
+de ordens de serviço.</span></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><span class="style3">24/06/2010</span></td>
+      <td style="vertical-align: top;">Novidade<br>
+      </td>
+      <td style="vertical-align: top;"><span class="style3">Quando selecionada a listagem de produtos compra / venda multiplas filiais, os dados eram gerais de todas as filiais.</span></td>
+      <td style="vertical-align: top;"><span class="style3">Criação de filtro para utilização da consulta de compra / venda produtos para multiplas filiais.</span></td>
+    </tr><tr>
+      <td style="vertical-align: top;">24/06/2010<br>
+      </td>
+      <td style="vertical-align: top;">Novidade<br>
+      </td>
+      <td style="vertical-align: top;">Relatório de chamados.<br>
+      </td>
+      <td style="vertical-align: top;">Criação de relatório de chamados no padrão jasper report com acesso através da tela de atendimentos na aba chamados.<br>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+Versão 1.2.2.6
+<table style="width: 677px;" border="1" cellpadding="2" cellspacing="0">
+  <tbody>
+    <tr>
+      <th style="width: 8%;" bgcolor="#999999"><span class="style7">Data</span></th>
+      <th style="width: 8%;" bgcolor="#999999"><span class="style7">Tipo</span></th>
+      <th style="width: 42%;" bgcolor="#999999"><span class="style7">Problema/Necessidade</span></th>
+      <th style="width: 42%;" bgcolor="#999999"><span class="style7">Solução</span></th>
+    </tr>
+    <tr>
+      <td>24/06/2010<br>
+</td>
+      <td><span class="style3">Erro<br>
+</span></td>
+      <td><span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span class="Apple-style-span" style="font-family: arial,sans-serif; font-size: 13px;"></span></span>
+Ao incluir um produto que em sua classificação fiscal possua Marg. Vlr.
+Agregado não esta sendo carregado para o campo MARGEMVLAGRITVENDA da
+table VDITVENDA.<br>
+</td>
+      <td>Correção na classe CalcImpostos.<br>
+"Contribuição de Paulo Bueno"<br>
+</td>
+    </tr>
+    <tr>
+      <td><span class="style3">25/06/2010<br>
+      </span></td>
+    <td>Novidade<br>
+</td>
+    <td>Sinalização de chamados em atendimento no grid da tela de atendimentos.<br>
+</td>
+    <td>Criação de coluna com icone indicativo de atividade no chamado.<br>
+</td>
+    </tr><tr><td>25/06/2010<br></td>
+    <td>Novidade<br></td>
+    <td>Diversas funcionalidades referentes ao controle de chamados e atendimentos.<br></td>
+    <td>Adequações no layout e mudança no nome ta tela de atendimentos para CRM;<br>
+<br></td>
+    </tr><tr><td>25/06/2010<br></td>
+    <td>Novidade<br></td>
+    <td>Permitir conclusão de chamado ao lançar atendimento.<br></td>
+    <td>Flag na tela de lançamento de atendimentos, indicando se o atendimento deve concluir o chamado.</td>
+    </tr><tr><td>25/06/2010<br></td>
+    <td>Novidade<br></td>
+    <td>Criação de flags para manutenção do contas a pagar.<br></td>
+    <td>Incluídos
+flags nas tabelas de contas a pagar, para permitir a atualização de
+campos sem que os triggers sejam disparados. Coluna (emmanut)<br></td>
+    </tr></tbody></table>
+Versão 1.2.2.7
+<table style="width: 677px;" border="1" cellpadding="2" cellspacing="0">
+  <tbody>
+    <tr>
+      <th style="width: 8%;" bgcolor="#999999"><span class="style7">Data</span></th>
+      <th style="width: 8%;" bgcolor="#999999"><span class="style7">Tipo</span></th>
+      <th style="width: 42%;" bgcolor="#999999"><span class="style7">Problema/Necessidade</span></th>
+      <th style="width: 42%;" bgcolor="#999999"><span class="style7">Solução</span></th>
+    </tr>
+    <tr>
+      <td>28/06/2010<br>
+</td>
+      <td><span class="style3">Novidade<br>
+</span></td>
+      <td><span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span class="Apple-style-span" style="font-family: arial,sans-serif; font-size: 13px;"></span></span>Novo campo para imagem para papel timbrado na tela de cadastro de filiais.<br>
+</td>
+      <td>Criação do campo conforme a necessidade descrita.<br>
+</td>
+    </tr>
+    <tr>
+      <td>28/06/2010<br></td>
+    <td>Erro<br></td>
+    <td>Ao abrir ordem de serviço.<br></td>
+    <td>Acerto no nome do campo de referencia do produto no lista campos.<br>
+</td>
+    </tr><tr><td style="vertical-align: top;">30/06/2010<br></td><td style="vertical-align: top;">Novidade<br></td><td style="vertical-align: top;">Implementação de mecanismo para carregamento automático da sequencia de pesagem de acordo com o status do recebimento.<br></td><td style="vertical-align: top;"><br></td></tr><tr><td style="vertical-align: top;">30/06/2010<br></td><td style="vertical-align: top;">Novidade<br></td><td style="vertical-align: top;">Implementação de mecanismo para carregamento de produto padrão no recebimento de mercadorias de acordo com o tipo de recebimento.<br></td><td style="vertical-align: top;"><br></td></tr><tr><td style="vertical-align: top;">30/06/2010<br></td><td style="vertical-align: top;">Erro<br></td><td style="vertical-align: top;">Problema na captura do peso em balanças do tipo BCI 10000.<br></td><td style="vertical-align: top;">Alteração no driver da balança BCI 10000 para inclusão de um zero a mais no peso.<br></td></tr><tr><td style="vertical-align: top;">30/06/2010<br></td><td style="vertical-align: top;">Novidade<br></td><td style="vertical-align: top;">Sistema não valida CPF de fornecedores.<br></td><td style="vertical-align: top;">Implementação de mecanismo de validação do CPF dos fornecedores pessoa física, no cadastro de fornecedores de acordo com preferência do usuário.</td></tr><tr><td style="vertical-align: top;">30/06/2010<br></td><td style="vertical-align: top;">Novidade<br></td><td style="vertical-align: top;">Criação do campo para cadastramento do pis/pasep/inss no cadastro de transportadores.<br></td><td style="vertical-align: top;"><br></td></tr><tr><td style="vertical-align: top;">30/06/2010<br></td><td style="vertical-align: top;">Alteração<br></td><td style="vertical-align: top;">Alterações no layout do ticket de pesagem:<br>Supressão do salto de linhas no layout.<br></td><td style="vertical-align: top;"><br></td></tr><tr><td>07/07/2010<br></td>
+    <td>Erro<br></td>
+    <td>Ao Abrir Orderm de Serviço/Recebimento de mercadoria. Erro ocorre quando existe mais de um tipo de recebimento de mercadoria com vários processos.<br></td>
+    <td>Acerto no parâmetro da classe GuardaCampos relativo ao tipo do campo. Alteração de ListaCampos.DB_SI&nbsp; para ListaCampos.DB_PF.<br></td>
+    </tr><tr><td>07/07/2010<br></td>
+    <td>Erro<br></td>
+    <td>No calculo de previsão de tributos para orçamentos, quando o cadastro da classificação fiscal utiliza caracteres não numéricos.<br></td>
+    <td>Acerto no tipo do campo "CODFISC" na procedure LFBUSCAPREVTRIBORC. <meta http-equiv="content-type" content="text/html; charset=utf-8"><span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span class="Apple-style-span" style="font-family: arial,sans-serif; font-size: 13px;"></span></span></td>
+    </tr></tbody></table>
+Versão 1.2.2.8
+<table style="width: 677px;" border="1" cellpadding="2" cellspacing="0">
+  <tbody>
+    <tr>
+      <th style="width: 8%;" bgcolor="#999999"><span class="style7">Data</span></th>
+      <th style="width: 8%;" bgcolor="#999999"><span class="style7">Tipo</span></th>
+      <th style="width: 42%;" bgcolor="#999999"><span class="style7">Problema/Necessidade</span></th>
+      <th style="width: 42%;" bgcolor="#999999"><span class="style7">Solução</span></th>
+    </tr>
+    <tr>
+      <td>12/07/2010&nbsp;</td>
+      <td>Correção&nbsp;</td>
+      <td>Erro calculo do ICMS em venda com desconto no valor total e redução na base do ICMS.<br>
+</td>
+      <td>Implementação de acerto no rateio de valor total do desconto e frete.&nbsp;</td>
+    </tr>
+    <tr>
+      <td>12/07/2010&nbsp;</td>
+    <td>Novidade&nbsp;</td>
+    <td>Procedure para facilitar depuração de ações de procedures e triggers.&nbsp;</td>
+    <td>SGDEBUG&nbsp;</td>
+    </tr><tr><td>12/07/2010<br></td>
+    <td>Novidade<br></td>
+    <td>Flexibilização das regras de CFOP<br></td>
+    <td>Criação de amarração entre regra de CFOP e ítem de classificação fiscal.<br></td>
+    </tr><tr><td>13/07/2010<br>
+</td>
+    <td>Novidade<br>
+</td>
+    <td>Filtro por tipos de clientes no relat&#341;io de ultimas vendas por cliente/produto.<br>
+</td>
+    <td>Inclusão do filtro.<br></td>
+    </tr><tr><td><br></td>
+    <td><br></td>
+    <td><br></td>
+    <td><br></td>
+    </tr>
+  </tbody></table>
+Versão 1.2.2.9
+<table style="width: 677px;" border="1" cellpadding="2" cellspacing="0">
+  <tbody>
+    <tr>
+      <th style="width: 8%;" bgcolor="#999999"><span class="style7">Data</span></th>
+      <th style="width: 8%;" bgcolor="#999999"><span class="style7">Tipo</span></th>
+      <th style="width: 42%;" bgcolor="#999999"><span class="style7">Problema/Necessidade</span></th>
+      <th style="width: 42%;" bgcolor="#999999"><span class="style7">Solução</span></th>
+    </tr>
+    <tr>
+      <td>14/07/2010&nbsp;</td>
+      <td>Ajuste&nbsp;</td>
+      <td>Ajuste
+no mecanismo de validação de versão para bloquear acesso a versões
+diferentes entre banco de dados e aplicação quando o parâmetro
+"validaversao" for omitido.&nbsp;</td>
+      <td>Lógica implementada.&nbsp;</td>
+    </tr>
+    <tr>
+      <td>19/07/2010&nbsp;</td>
+    <td>Erro&nbsp;</td>
+    <td>Problema na ferramenta de troca de número de documento de compras. <br>
+</td>
+    <td>Implementação no mecanismo, atualizando o registro para manutenção antes de trocar o numero de documento de compra.&nbsp;</td>
+    </tr><tr><td>19/07/2010<br></td>
+    <td>Novidade<br></td>
+    <td>Código do email padrão para envio de XML da nota fiscal eletrônica.<br></td>
+    <td>Criação de FK para tabela de emails.<br></td>
+    </tr><tr><td><br></td>
+    <td><br></td>
+    <td><br></td>
+    <td><br></td>
+    </tr><tr><td><br></td>
+    <td><br></td>
+    <td><br></td>
+    <td><br></td>
+    </tr>
+  </tbody></table>
+
+
+

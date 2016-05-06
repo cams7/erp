@@ -1,0 +1,12 @@
+buildhistory.win32b_Preprocess[0]=Options
+buildhistory.win32b_bcc32[0]=Options
+buildhistory.win32b_ilink32[0]=Options
+buildhistory.win32b_implib[0]=Options
+buildtool_history.win32b[0]=bcc32
+buildtool_history_project.win32b[0]=bcc32
+debugger.gdbAssemblyFlavor[0]=ATT disassembly
+history.files.active[0]=L%|/download/win/drivers/bematech/exemplo/c++/cbulder/Main.cpp
+history.files.open.1[0]=bemafi32.h,F;159,12049
+history.files.open.2[0]=JBemaFI32.c,F;1343,46560
+history.files.open.3[0]=L%|/download/win/drivers/bematech/exemplo/c++/cbulder/Main.cpp,F;1,0
+history.files.open.4[0]=org_freedom_drivers_JBemaFI32.h,F;645,19779

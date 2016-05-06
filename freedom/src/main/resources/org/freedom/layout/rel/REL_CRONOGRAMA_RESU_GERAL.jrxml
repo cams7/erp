@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="REL_CRONOGRAMA_RESU_GERAL" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="782" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" scriptletClass="org.freedom.scriptlet.SitContrScriptlet">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="3"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="CODFILIAL" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODEMP" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$P{CODEMP}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/bln/workspace/freedom/src/org/freedom/relatorios/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CODCONTR" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[$P{CODCONTR}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select  ct.codcontr , it.coditcontr,it.descitcontr
+
+from vdcontrato ct, vditcontrato it
+
+where ct.codemp=$P{CODEMP} and ct.codfilial=$P{CODFILIAL} and ct.codcontr=$P{CODCONTR}
+and ct.codcontr=it.codcontr]]>
+	</queryString>
+	<field name="CODCONTR" class="java.lang.Integer"/>
+	<field name="CODITCONTR" class="java.lang.Integer"/>
+	<field name="DESCITCONTR" class="java.lang.String"/>
+	<group name="CODCONTR">
+		<groupExpression><![CDATA[$P{CODCONTR}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band height="109">
+				<staticText>
+					<reportElement mode="Opaque" x="25" y="15" width="498" height="15" backcolor="#3D4971"/>
+					<textElement/>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<line>
+					<reportElement x="24" y="14" width="1" height="74"/>
+				</line>
+				<line>
+					<reportElement x="522" y="14" width="1" height="74"/>
+				</line>
+				<line>
+					<reportElement x="24" y="88" width="499" height="1"/>
+				</line>
+				<line>
+					<reportElement x="25" y="14" width="497" height="1"/>
+				</line>
+				<line>
+					<reportElement x="25" y="30" width="497" height="1"/>
+				</line>
+				<staticText>
+					<reportElement x="25" y="15" width="497" height="15" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Legenda]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="1" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="15" width="781" height="35" backcolor="#3D4971"/>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<line>
+				<reportElement x="475" y="37" width="1" height="13"/>
+			</line>
+			<line>
+				<reportElement x="679" y="37" width="1" height="13"/>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="477" y="14" width="48" height="20" forecolor="#7BC0E2" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prev. Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="633" y="15" width="42" height="20" forecolor="#7BC0E2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prev. Mês]]></text>
+			</staticText>
+			<line>
+				<reportElement x="475" y="15" width="1" height="21"/>
+			</line>
+			<staticText>
+				<reportElement x="735" y="15" width="46" height="20" forecolor="#A2A2A2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo Mês]]></text>
+			</staticText>
+			<line>
+				<reportElement x="577" y="15" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="526" y="15" width="1" height="21"/>
+			</line>
+			<staticText>
+				<reportElement x="582" y="15" width="43" height="20" forecolor="#A2A2A2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Saldo. Ant.  ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="730" y="37" width="1" height="13"/>
+			</line>
+			<line>
+				<reportElement x="526" y="37" width="1" height="13"/>
+			</line>
+			<line>
+				<reportElement x="475" y="36" width="306" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="14" width="781" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="687" y="15" width="42" height="20" forecolor="#96D050"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rela. Mês]]></text>
+			</staticText>
+			<line>
+				<reportElement x="628" y="15" width="1" height="21"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="15" width="474" height="35" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resumo Geral]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="15" width="1" height="35"/>
+			</line>
+			<line>
+				<reportElement x="577" y="37" width="1" height="13"/>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="527" y="15" width="43" height="20" forecolor="#96D050" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rela. Ant.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="730" y="15" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="1" y="50" width="780" height="1"/>
+			</line>
+			<line>
+				<reportElement x="628" y="37" width="1" height="13"/>
+			</line>
+			<line>
+				<reportElement x="679" y="15" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="781" y="14" width="1" height="36"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="730" y="0" width="1" height="14" forecolor="#000000"/>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="781" y="-1" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="-1" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="679" y="0" width="1" height="14" forecolor="#000000" backcolor="#000000"/>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="475" y="0" width="1" height="14" forecolor="#000000"/>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="628" y="0" width="1" height="14" forecolor="#000000"/>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="577" y="0" width="1" height="14" forecolor="#000000"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="0" y="14" width="781" height="1" forecolor="#000000" backcolor="#000000"/>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="526" y="0" width="1" height="14" forecolor="#000000"/>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="39" y="0" width="411" height="14" isRemoveLineWhenBlank="true"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CODITCONTR}.toString() + "           " + $F{DESCITCONTR}.trim()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

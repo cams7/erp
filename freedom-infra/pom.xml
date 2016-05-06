@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>br.com.cams7.erp</groupId>	
+		<version>1.2.6.5</version>
+		<artifactId>freedom-erp</artifactId>
+	</parent>
+
+	<artifactId>freedom-infra</artifactId>
+
+	<name>Freedom Infra</name>
+	<description></description>
+
+	<packaging>jar</packaging>
+
+	<properties>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>			
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>		
+		<!--dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mailapi</artifactId>
+		</dependency-->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>mailapi</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.swinglabs</groupId>
+			<artifactId>swingx</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.swinglabs</groupId>
+			<artifactId>swingx-ws</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.firebirdsql.jdbc</groupId>
+			<artifactId>jaybird</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.media</groupId>
+			<artifactId>jmf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.squirrel-sql.thirdparty-non-maven</groupId>
+			<artifactId>ilf-gpl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>comm</groupId>
+			<artifactId>comm</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>	
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>					
+					<archive>
+						<manifest>
+							<mainClass>org.freedom.infra.util.crypt.Crypt</mainClass>		
+						</manifest>						
+					</archive>
+				</configuration>
+			</plugin>			
+		</plugins>
+	</build>
+</project>
+
+
+

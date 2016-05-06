@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="orc_cab_90" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.464100000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CODFILIAL" class="java.lang.String"/>
+	<parameter name="CODEMP" class="java.lang.String"/>
+	<parameter name="CODORC" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/setpointadm/workspace/freedom/src/org/freedom/layout/orc/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+F.NOMEFILIAL,F.ENDFILIAL,F.NUMFILIAL,F.EMAILFILIAL,F.DDDFILIAL,
+F.FONEFILIAL,MF.NOMEMUNIC,F.SIGLAUF,F.CEPFILIAL,E.FOTOEMP, F.BAIRFILIAL, F.WWWFILIAL,
+O.CODCLI, O.OBSORC, O.PRAZOENTORC, O.PRAZOENTORC, MC.NOMEMUNIC CIDCLI, C.ENDCLI,
+C.FONECLI, C.FAXCLI, C.BAIRCLI, C.SIGLAUF UFCLI, DDDCLI, C.NUMCLI, C.RAZCLI, O.CODORC, O.DTORC,
+O.DTVENCORC, C.CONTCLI, P1.USANOMEVENDORC, C.CNPJCLI,
+O.CODTPCONV, V.NOMEVEND,C.ENDENT, TN.RAZTRAN,TN.FONETRAN,C.CEPCLI,
+C.ENDCOB,C.INSCCLI,PG.DESCPLANOPAG,O.TIPOFRETE, V.DDDFONEVEND, V.FONEVEND, O.VLRLIQORC,O.VLRPRODORC,
+F.RAZFILIAL,F.SIGLAUF ESTFOR,C.SIGLAUF ESTCLI,MF.NOMEMUNIC, V.EMAILVEND, V.CELVEND, V.DDDCELVEND
+FROM  VDCLIENTE C, SGFILIAL F, SGEMPRESA E, SGPREFERE1 P1, SGMUNICIPIO MF,SGMUNICIPIO MC, VDVENDEDOR V,FNPLANOPAG PG, VDORCAMENTO O
+LEFT OUTER JOIN VDTRANSP TN ON
+TN.CODEMP=O.CODEMPTN AND TN.CODFILIAL=O.CODFILIALTN AND TN.CODTRAN=O.CODTRAN
+WHERE O.CODEMP=$P{CODEMP} AND O.CODFILIAL=$P{CODFILIAL} AND O.CODORC=$P{CODORC} AND
+C.CODEMP=O.CODEMPCL AND C.CODFILIAL=O.CODFILIALCL AND C.CODCLI=O.CODCLI AND
+F.CODEMP=O.CODEMP AND F.CODFILIAL=O.CODFILIAL AND V.CODEMP=O.CODEMPVD AND V.CODFILIAL=O.CODFILIALVD AND
+V.CODVEND=O.CODVEND AND
+P1.CODEMP=O.CODEMP AND P1.CODFILIAL=$P{CODFILIAL} AND
+PG.CODEMP=O.CODEMPPG AND PG.CODFILIAL=O.CODFILIALPG AND PG.CODPLANOPAG=O.CODPLANOPAG AND
+MF.CODPAIS=F.CODPAIS AND MF.SIGLAUF=F.SIGLAUF AND MF.CODMUNIC=F.CODMUNIC AND
+MC.CODPAIS=C.CODPAIS AND MC.SIGLAUF=C.SIGLAUF AND MC.CODMUNIC=C.CODMUNIC]]>
+	</queryString>
+	<field name="NOMEFILIAL" class="java.lang.String"/>
+	<field name="ENDFILIAL" class="java.lang.String"/>
+	<field name="NUMFILIAL" class="java.lang.Integer"/>
+	<field name="EMAILFILIAL" class="java.lang.String"/>
+	<field name="DDDFILIAL" class="java.lang.String"/>
+	<field name="FONEFILIAL" class="java.lang.String"/>
+	<field name="NOMEMUNIC" class="java.lang.String"/>
+	<field name="SIGLAUF" class="java.lang.String"/>
+	<field name="CEPFILIAL" class="java.lang.String"/>
+	<field name="FOTOEMP" class="java.lang.Object"/>
+	<field name="BAIRFILIAL" class="java.lang.String"/>
+	<field name="WWWFILIAL" class="java.lang.String"/>
+	<field name="CODCLI" class="java.lang.Integer"/>
+	<field name="OBSORC" class="java.lang.String"/>
+	<field name="PRAZOENTORC" class="java.lang.Integer"/>
+	<field name="CIDCLI" class="java.lang.String"/>
+	<field name="ENDCLI" class="java.lang.String"/>
+	<field name="FONECLI" class="java.lang.String"/>
+	<field name="FAXCLI" class="java.lang.String"/>
+	<field name="BAIRCLI" class="java.lang.String"/>
+	<field name="UFCLI" class="java.lang.String"/>
+	<field name="DDDCLI" class="java.lang.String"/>
+	<field name="NUMCLI" class="java.lang.Integer"/>
+	<field name="RAZCLI" class="java.lang.String"/>
+	<field name="CODORC" class="java.lang.Integer"/>
+	<field name="DTORC" class="java.sql.Date"/>
+	<field name="DTVENCORC" class="java.sql.Date"/>
+	<field name="CONTCLI" class="java.lang.String"/>
+	<field name="USANOMEVENDORC" class="java.lang.String"/>
+	<field name="CNPJCLI" class="java.lang.String"/>
+	<field name="CODTPCONV" class="java.lang.Integer"/>
+	<field name="NOMEVEND" class="java.lang.String"/>
+	<field name="ENDENT" class="java.lang.String"/>
+	<field name="RAZTRAN" class="java.lang.String"/>
+	<field name="FONETRAN" class="java.lang.String"/>
+	<field name="CEPCLI" class="java.lang.String"/>
+	<field name="ENDCOB" class="java.lang.String"/>
+	<field name="INSCCLI" class="java.lang.String"/>
+	<field name="DESCPLANOPAG" class="java.lang.String"/>
+	<field name="TIPOFRETE" class="java.lang.String"/>
+	<field name="DDDFONEVEND" class="java.lang.String"/>
+	<field name="FONEVEND" class="java.lang.String"/>
+	<field name="VLRLIQORC" class="java.math.BigDecimal"/>
+	<field name="VLRPRODORC" class="java.math.BigDecimal"/>
+	<field name="RAZFILIAL" class="java.lang.String"/>
+	<field name="ESTFOR" class="java.lang.String"/>
+	<field name="ESTCLI" class="java.lang.String"/>
+	<field name="EMAILVEND" class="java.lang.String"/>
+	<field name="CELVEND" class="java.lang.String"/>
+	<field name="DDDCELVEND" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="10" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="87" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="87"/>
+			</rectangle>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="173" y="0" width="88" height="12"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{DTORC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="15" width="263" height="12"/>
+				<box leftPadding="1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CODCLI}.toString().trim() + " - " + $F{RAZCLI}.trim()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="15" width="112" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["(" + $F{DDDCLI}.substring(0,2) + ") " + $F{FONECLI}.substring(0,4) + "-" + $F{FONECLI}.substring(4,8)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="30" width="252" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ENDCLI}.trim() + ", " + $F{NUMCLI}.toString().trim()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="44" width="112" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{UFCLI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="91" y="44" width="221" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{BAIRCLI}.trim() + " / " + $F{NOMEMUNIC}.trim()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="36" y="58" width="276" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CNPJCLI}.trim().substring(0,2) + "." + $F{CNPJCLI}.trim().substring(2,5) + "."
++ $F{CNPJCLI}.trim().substring(5,8) + "/" + $F{CNPJCLI}.trim().substring(8,12) + "-"
+ + $F{CNPJCLI}.trim().substring(12,14)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="30" width="112" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{CEPCLI}.substring(0,2) + "." + $F{CEPCLI}.substring(2,5) + "-" + $F{CEPCLI}.substring(5,8)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="58" width="112" height="12"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{INSCCLI}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="0" width="21" height="12"/>
+				<textElement markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="0" width="63" height="12"/>
+				<textElement markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cadastro: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="0" width="53" height="12"/>
+				<textElement markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emissão: ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="317" y="0" width="74" height="12"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="15" width="45" height="12"/>
+				<textElement markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="30" width="56" height="12"/>
+				<textElement markup="none">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Endereço: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="44" width="85" height="12"/>
+				<textElement markup="none">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Bairro/Município: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="15" width="31" height="12"/>
+				<textElement markup="none">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fone:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="30" width="31" height="12"/>
+				<textElement markup="none">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CEP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="44" width="31" height="12"/>
+				<textElement markup="none">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[UF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="58" width="31" height="12"/>
+				<textElement markup="none">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[IE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="58" width="32" height="12"/>
+				<textElement markup="none">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CNPJ: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="72" width="32" height="12"/>
+				<textElement markup="none">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[A/C:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="25" y="0" width="84" height="12"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{CODORC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="4" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<subreport>
+				<reportElement key="subreport-1" x="0" y="0" width="802" height="46"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "orc_det_90.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="138" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="3" width="190" height="13"/>
+				<textElement/>
+				<text><![CDATA[Impostos inclusos: ICMS, ICMS-ST, IPI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="22" width="128" height="13"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[- CONDIÇÕES GERAIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="35" width="95" height="13"/>
+				<textElement/>
+				<text><![CDATA[Prazo de Entrega: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="99" y="35" width="415" height="24"/>
+				<textElement/>
+				<text><![CDATA[10 dias úteis.
+Ou conforme disponibilidade de estoque no evendo da formalização do pedido.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="64" width="117" height="13"/>
+				<textElement/>
+				<text><![CDATA[Condições de Entrega:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="64" width="151" height="13"/>
+				<textElement/>
+				<text><![CDATA[CIF para compras acima de:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="78" width="138" height="13"/>
+				<textElement/>
+				<text><![CDATA[Condições de Pagamento:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="91" width="117" height="13"/>
+				<textElement/>
+				<text><![CDATA[Validade da Proposta:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="91" width="151" height="13"/>
+				<textElement/>
+				<text><![CDATA[10 dias a contar desta data.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="111" width="466" height="13"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Sem mais para o momento, desde já agradecemos e nos colocamos à disponsição de Vsa.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="142" y="78" width="151" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{DESCPLANOPAG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="469" y="3" width="141" height="15" backcolor="#C0C0C0"/>
+				<box leftPadding="1" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{VLRPRODORC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="610" y="3" width="121" height="15" backcolor="#C0C0C0"/>
+				<box leftPadding="1" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{VLRLIQORC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="369" y="3" width="100" height="15" backcolor="#C0C0C0"/>
+				<box leftPadding="1" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="84" splitType="Stretch">
+			<textField>
+				<reportElement x="188" y="0" width="422" height="14"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMEFILIAL}.trim()]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy HH.mm.ss" isBlankWhenNull="true">
+				<reportElement x="188" y="55" width="422" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="188" y="13" width="422" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ENDFILIAL}.trim() + ", " + $F{NUMFILIAL} + " - " + $F{BAIRFILIAL}.trim() + " - " + "CEP " + $F{CEPFILIAL}.substring(0,2) + "." + $F{CEPFILIAL}.substring(2,5) + "-" + $F{CEPFILIAL}.substring(5,8)]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="188" y="27" width="422" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMEMUNIC}.trim() + " - " + $F{SIGLAUF}.trim() + " - " + "Fone: (" + $F{DDDFILIAL}.substring(0,2) + ") " + $F{FONEFILIAL}.substring(0,4) + "-" + $F{FONEFILIAL}.substring(4,8)]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="188" y="41" width="422" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["E-mail: " + $F{EMAILFILIAL}.toLowerCase().trim() + " - " + "Site: " + $F{WWWFILIAL}.toLowerCase().trim()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="173" height="12"/>
+				<box leftPadding="2"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMEVEND}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="12" width="79" height="12"/>
+				<box leftPadding="2"/>
+				<textElement/>
+				<text><![CDATA[Vendas]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="23" width="173" height="12"/>
+				<box leftPadding="2"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Fone: " + "(" + $F{DDDFONEVEND}.substring(0,2) + ") " + $F{FONEVEND}.substring(0,4) + "-" + $F{FONEVEND}.substring(4,8)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="34" width="173" height="12"/>
+				<box leftPadding="2"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Celular: " + "(" + $F{DDDCELVEND}.substring(0,2) + ") " + $F{CELVEND}.substring(0,4) + "-" + $F{CELVEND}.substring(4,8)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="45" width="173" height="12"/>
+				<box leftPadding="2"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["E-mail: " + $F{EMAILVEND}.toLowerCase().trim()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="624" y="23" width="173" height="12"/>
+				<box leftPadding="2"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Fone: " + "(" + $F{DDDFONEVEND}.substring(0,2) + ") " + $F{FONEVEND}.substring(0,4) + "-" + $F{FONEVEND}.substring(4,8)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="624" y="45" width="173" height="12"/>
+				<box leftPadding="2"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["E-mail: " + $F{EMAILVEND}.toLowerCase().trim()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="624" y="34" width="173" height="12"/>
+				<box leftPadding="2"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Celular: " + "(" + $F{DDDCELVEND}.substring(0,2) + ") " + $F{CELVEND}.substring(0,4) + "-" + $F{CELVEND}.substring(4,8)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="624" y="12" width="79" height="12"/>
+				<box leftPadding="2"/>
+				<textElement/>
+				<text><![CDATA[Orçamentista]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="624" y="1" width="173" height="12"/>
+				<box leftPadding="2"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMEVEND}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="73" width="190" height="10" forecolor="#0000FF"/>
+				<textElement>
+					<font size="7" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Powered by FreedomERP - www.freedom.org.br]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="71" width="800" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-13" width="800" height="1"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="3" splitType="Stretch"/>
+	</summary>
+</jasperReport>
