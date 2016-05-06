@@ -10,4 +10,4 @@ mvn install:install-file -DgroupId=net.beeger.squareness -DartifactId=squareness
 mvn install:install-file -DgroupId=org.eclipse.jdt.core.compiler -DartifactId=jdt-compiler -Dversion=NOT_INFORMED -Dpackaging=jar -Dfile=other-libs/jdt-compiler.jar
 
 #Para rodar o programa, execute o comando abaixo:
-java -DARQINI='\opt\freedom\ini\freedom-desenv.ini' -jar freedom/target/freedom.jar
+java -DARQINI='\opt\freedom\ini\freedom.ini' -jar freedom/target/freedom.jar

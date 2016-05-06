@@ -766,7 +766,7 @@ public class FreedomSTD extends AplicativoPD {
 
 	public static void main(String params[]) {		
 		try {
-			Aplicativo.setLookAndFeel("freedom-desenv.ini");
+			Aplicativo.setLookAndFeel("freedom.ini");
 			FreedomSTD freedom = new FreedomSTD();
 
 			if (FPrincipalPD.exibeAgendaFPrincipal()) {
