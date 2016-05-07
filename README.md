@@ -38,8 +38,8 @@ Sistema requerido
 Configurações iniciais
 -------------------
 
-1. Através do link: <http://www.firebirdsql.org/en/firebird-1-5>, baixe o __Firebird-1.5.6.5026-0-Win32__ e o instale no diretório `c:\opt\firebird`.
-2. Através do link: <https://code.google.com/p/freedom-erp/downloads/list>, baixe o __freedomERP-1.2.6.5-windows-installer__ e o instale no diretório `c:\opt\freedom`.
+1. Através do link: <https://code.google.com/p/freedom-erp/downloads/list>, baixe o __freedomERP-1.2.6.5-windows-installer__ e o instale no diretório `c:\opt\freedom`.
+2. Através do link: <http://www.firebirdsql.org/en/firebird-1-5>, baixe o __Firebird-1.5.6.5026-0-Win32__ e o instale no diretório `c:\opt\firebird`.
 
 Para incluir algumas depedências que não são encontradas no repositório oficial do maven
 -------------------
