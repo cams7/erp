@@ -46,22 +46,35 @@
 			<artifactId>javax.mail</artifactId>
 		</dependency>
 		
-		<!--dependency>
+		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-		</dependency-->
-		<dependency>
+		</dependency>
+		<!--dependency>
 			<groupId>jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-		</dependency>
+		</dependency-->
 		<!--dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports-fonts</artifactId>
 		</dependency-->
-		<!--dependency>
+		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy</artifactId>
+		</dependency>
+				
+		<!--dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
 		</dependency-->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-contrib</artifactId>
+		</dependency>
 		
 		<dependency>
 			<groupId>org.swinglabs</groupId>
@@ -71,22 +84,20 @@
 			<groupId>org.swinglabs</groupId>
 			<artifactId>swingx-ws</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.jxls</groupId>
+			<artifactId>jxls-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jxls</groupId>
+			<artifactId>jxls-reader</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>comm</groupId>
 			<artifactId>comm</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-contrib</artifactId>
-		</dependency>
-		<!--dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-		</dependency-->
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml-schemas</artifactId>
-		</dependency>		
+		</dependency>				
 		<dependency>
 			<groupId>org.apache.axis</groupId>
 			<artifactId>axis</artifactId>
@@ -98,15 +109,7 @@
 		<dependency>
 			<groupId>com.toedter</groupId>
 			<artifactId>jcalendar</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.jxls</groupId>
-			<artifactId>jxls-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.jxls</groupId>
-			<artifactId>jxls-reader</artifactId>
-		</dependency>
+		</dependency>		
 		<dependency>
 			<groupId>org.mnode.ical4j</groupId>
 			<artifactId>ical4j</artifactId>
@@ -115,10 +118,10 @@
 			<groupId>javax.xml</groupId>
 			<artifactId>jaxrpc</artifactId>
 		</dependency>		
-		<dependency>
+		<!--dependency>
 			<groupId>commons-discovery</groupId>
 			<artifactId>commons-discovery</artifactId>
-		</dependency>
+		</dependency-->
 		<dependency>
 			<groupId>bizcal</groupId>
 			<artifactId>bizcal</artifactId>

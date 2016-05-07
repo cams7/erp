@@ -40,7 +40,7 @@
 			<groupId>br.com.cams7.erp</groupId>
 			<artifactId>freedom-fw1</artifactId>
 		</dependency>
-		
+				
 		<!--dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mailapi</artifactId>
@@ -70,14 +70,14 @@
 			<artifactId>saaj-impl</artifactId>
 		</dependency>
 		
-		<!--dependency>
+		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-		</dependency-->
-		<dependency>
+		</dependency>
+		<!--dependency>
 			<groupId>jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
-		</dependency>
+		</dependency-->
 		<!--dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports-fonts</artifactId>
@@ -87,6 +87,12 @@
 			<groupId>org.firebirdsql.jdbc</groupId>
 			<artifactId>jaybird</artifactId>
 		</dependency>
+		
+		<!--dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+		</dependency-->
+		
 		<dependency>
 			<groupId>net.sf.squirrel-sql.thirdparty-non-maven</groupId>
 			<artifactId>ilf-gpl</artifactId>
@@ -100,10 +106,6 @@
 			<artifactId>barbecue</artifactId>
 		</dependency>		
 		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>net.sf.nachocalendar</groupId>
 			<artifactId>nachocalendar</artifactId>
 		</dependency>
@@ -116,14 +118,14 @@
 			<groupId>info.clearthought</groupId>
 			<artifactId>table-layout</artifactId>
 		</dependency>	
-		<dependency>
+		<!--dependency>
 			<groupId>org.codehaus.castor</groupId>
 			<artifactId>castor</artifactId>
-		</dependency>	
-		<dependency>
+		</dependency-->	
+		<!--dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
-		</dependency>
+		</dependency-->
 		<dependency>
 			<groupId>net.sf.squirrel-sql.thirdparty-non-maven</groupId>
 			<artifactId>metouia</artifactId>
@@ -136,10 +138,10 @@
 			<groupId>net.beeger.squareness</groupId>
 			<artifactId>squareness</artifactId>
 		</dependency>
-		<dependency>
+		<!--dependency>
 			<groupId>org.eclipse.jdt.core.compiler</groupId>
 			<artifactId>jdt-compiler</artifactId>
-		</dependency>
+		</dependency-->
 	</dependencies>
 
 	<build>

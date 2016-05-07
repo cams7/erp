@@ -23,6 +23,7 @@
 		
 		<mail.version>1.4.7</mail.version>
 		<!--mail.version>1.5.5</mail.version-->
+		<poi.version>3.13</poi.version>
 		
 		<dependency.jars>../../project-libs</dependency.jars>
 		<!--dependency.jars>lib</dependency.jars-->
@@ -37,7 +38,7 @@
 	</modules>
 
 	<dependencyManagement>
-		<dependencies>	
+		<dependencies>			
 			<dependency>
 				<groupId>br.com.cams7.erp</groupId>
 				<artifactId>freedom-infra</artifactId>
@@ -61,6 +62,32 @@
 				<artifactId>freedom-fw1</artifactId>
 				<version>${project.version}</version>
 				<type>jar</type>
+			</dependency>
+								
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>1.9.2</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.17</version>
+			</dependency>
+			<dependency>
+				<groupId>xml-apis</groupId>
+				<artifactId>xml-apis</artifactId>
+				<version>2.0.2</version>
 			</dependency>
 			
 			<!--dependency>
@@ -110,26 +137,75 @@
 				<version>1.3</version>
 			</dependency>
 			
-			<!--dependency>
+			<dependency>
 				<groupId>net.sf.jasperreports</groupId>
 				<artifactId>jasperreports</artifactId>
-				<version>4.8.0</version>
-			</dependency-->
-			<dependency>
+				<version>5.6.1</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.bouncycastle</groupId>
+						<artifactId>bcmail-jdk14</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.bouncycastle</groupId>
+						<artifactId>bcprov-jdk14</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!--dependency>
 				<groupId>jasperreports</groupId>
 				<artifactId>jasperreports</artifactId>
 				<version>3.5.3</version>
-			</dependency>
+			</dependency-->
 			<!--dependency>
 				<groupId>net.sf.jasperreports</groupId>
 				<artifactId>jasperreports-fonts</artifactId>
 				<version>4.0.0</version>
 			</dependency-->
-			<!--dependency>
+			<dependency>
 				<groupId>org.codehaus.groovy</groupId>
 				<artifactId>groovy</artifactId>
-				<version>1.7.11</version>
-			</dependency-->
+				<!--version>1.7.11</version-->
+				<version>2.4.6</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.firebirdsql.jdbc</groupId>
+				<artifactId>jaybird</artifactId>
+				<!--version>2.2.5</version-->
+				<version>2.1.6</version>
+				<exclusions>
+					<exclusion>
+						<groupId>javax.jms</groupId>
+						<artifactId>jms</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi</artifactId>
+				<!--version>3.2-FINAL</version-->
+				<version>${poi.version}</version>
+			</dependency>			
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<!--version>3.9</version-->
+				<version>${poi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml-schemas</artifactId>
+				<!--version>3.9</version-->
+				<version>${poi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-contrib</artifactId>
+				<!--version>3.2-FINAL</version-->
+				<version>3.6</version>
+			</dependency>
 			
 			<dependency>
 				<groupId>org.swinglabs</groupId>
@@ -141,18 +217,18 @@
 				<artifactId>swingx-ws</artifactId>
 				<version>1.0</version>
 			</dependency>
+			
 			<dependency>
-				<groupId>org.firebirdsql.jdbc</groupId>
-				<artifactId>jaybird</artifactId>
-				<!--version>2.2.5</version-->
-				<version>2.1.6</version>
-				 <exclusions>
-					<exclusion>
-						<groupId>javax.jms</groupId>
-						<artifactId>jms</artifactId>
-					</exclusion>
-				</exclusions>
+				<groupId>net.sf.jxls</groupId>
+				<artifactId>jxls-core</artifactId>
+				<version>1.0.6</version>
 			</dependency>
+			<dependency>
+				<groupId>net.sf.jxls</groupId>
+				<artifactId>jxls-reader</artifactId>
+				<version>1.0.6</version>
+			</dependency>
+			
 			<dependency>
 				<groupId>javax.media</groupId>
 				<artifactId>jmf</artifactId>
@@ -172,29 +248,7 @@
 				<groupId>softwareexpress.sitef</groupId>
 				<artifactId>jclisitef</artifactId>
 				<version>NOT_INFORMED</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi</artifactId>
-				<version>3.2-FINAL</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi-contrib</artifactId>
-				<version>3.2-FINAL</version>
-			</dependency>
-			<!--dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi-ooxml</artifactId>
-				<version>3.9</version>
-			</dependency-->
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi-ooxml-schemas</artifactId>
-				<version>3.9</version>
-			</dependency>
-					
+			</dependency>					
 			<dependency>
 				<groupId>org.apache.axis</groupId>
 				<artifactId>axis</artifactId>
@@ -209,17 +263,7 @@
 				<groupId>com.toedter</groupId>
 				<artifactId>jcalendar</artifactId>
 				<version>1.4</version>
-			</dependency>
-			<dependency>
-				<groupId>net.sf.jxls</groupId>
-				<artifactId>jxls-core</artifactId>
-				<version>1.0.6</version>
-			</dependency>
-			<dependency>
-				<groupId>net.sf.jxls</groupId>
-				<artifactId>jxls-reader</artifactId>
-				<version>1.0.6</version>
-			</dependency>
+			</dependency>			
 			<dependency>
 				<groupId>org.mnode.ical4j</groupId>
 				<artifactId>ical4j</artifactId>
@@ -231,11 +275,11 @@
 				<version>1.1</version>
 			</dependency>
 			
-			<dependency>
+			<!--dependency>
 				<groupId>commons-discovery</groupId>
 				<artifactId>commons-discovery</artifactId>
 				<version>0.5</version>
-			</dependency>
+			</dependency-->
 			<dependency>
 				<groupId>bizcal</groupId>
 				<artifactId>bizcal</artifactId>
@@ -263,16 +307,16 @@
 				<version>4.2.2</version>
 				<!--version>4.3.0</version-->
 			</dependency>
-			<dependency>
+			<!--dependency>
 				<groupId>org.codehaus.castor</groupId>
 				<artifactId>castor</artifactId>
 				<version>1.2</version>
-			</dependency>
-			<dependency>
+			</dependency-->
+			<!--dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-beans</artifactId>
 				<version>2.5.6.SEC03</version>
-			</dependency>
+			</dependency-->
 			<dependency>
 				<groupId>net.sf.squirrel-sql.thirdparty-non-maven</groupId>
 				<artifactId>metouia</artifactId>
@@ -288,11 +332,11 @@
 				<artifactId>squareness</artifactId>
 				<version>NOT_INFORMED</version>
 			</dependency>
-			<dependency>
+			<!--dependency>
 				<groupId>org.eclipse.jdt.core.compiler</groupId>
 				<artifactId>jdt-compiler</artifactId>
 				<version>NOT_INFORMED</version>
-			</dependency>
+			</dependency-->
 		</dependencies>
 	</dependencyManagement>
 
@@ -321,9 +365,9 @@
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>2.6</version>
 					<configuration>
-						<excludes>
+						<!--excludes>
 							<exclude>**/log4j.properties</exclude>
-						</excludes>
+						</excludes-->
 						<archive>
 							<manifest>
 								<addClasspath>true</addClasspath>

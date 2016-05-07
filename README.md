@@ -62,4 +62,4 @@ Para rodar o programa
 No diretório onde o projeto foi baixado, execute as linhas de comando abaixo:
 	
 	mvn clean install
-	java -DARQINI='\opt\freedom\ini\freedom.ini' -jar freedom/target/freedom.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar freedom/target/freedom.jar
