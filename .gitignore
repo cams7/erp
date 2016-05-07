@@ -25,7 +25,7 @@ bin/
 *.ear
 
 #Jasper files
-*.jasper
+#*.jasper
 
 #Bibliotecas do projeto
 project-libs/

@@ -44,7 +44,7 @@ Configurações iniciais
 Para incluir algumas depedências que não são encontradas no repositório oficial do maven
 -------------------
 
-No direitório onde o projeto foi baixado, execute as linhas de comando abaixo:
+No diretório onde o projeto foi baixado, execute as linhas de comando abaixo:
 
 	mvn install:install-file -DgroupId=comm -DartifactId=comm -Dversion=2.0 -Dpackaging=jar -Dfile=other-libs/comm-2.0.jar
 	mvn install:install-file -DgroupId=bizcal -DartifactId=bizcal -Dversion=NOT_INFORMED -Dpackaging=jar -Dfile=other-libs/bizcal.jar
@@ -59,7 +59,7 @@ No direitório onde o projeto foi baixado, execute as linhas de comando abaixo:
 Para rodar o programa
 -------------------
 
-No direitório onde o projeto foi baixado, execute as linhas de comando abaixo:
+No diretório onde o projeto foi baixado, execute as linhas de comando abaixo:
 	
 	mvn clean install
 	java -DARQINI='\opt\freedom\ini\freedom.ini' -jar freedom/target/freedom.jar
