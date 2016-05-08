@@ -62,4 +62,15 @@ Para rodar o programa
 No diretório onde o projeto foi baixado, execute as linhas de comando abaixo:
 	
 	mvn clean install
-	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar freedom/target/freedom.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-atd/target/freedomatd.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-cfg/target/freedomcfg.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-crm/target/freedomcrm.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-fnc/target/freedomfnc.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-gms/target/freedomgms.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-gpe/target/freedomgpe.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-grh/target/freedomgrh.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-lvf/target/freedomlvf.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-pcp/target/freedompcp.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-pdv/target/freedompdv.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-rep/target/freedomrep.jar
+	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-std/target/freedomstd.jar

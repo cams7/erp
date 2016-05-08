@@ -62,7 +62,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
+		<finalName>freedominfra</finalName>
 		<plugins>	
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

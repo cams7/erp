@@ -35,6 +35,7 @@
 		<module>freedom-ecf</module>
 		<module>freedom-fw1</module>
 		<module>freedom</module>
+		<module>modulos</module>
 	</modules>
 
 	<dependencyManagement>
@@ -60,6 +61,12 @@
 			<dependency>
 				<groupId>br.com.cams7.erp</groupId>
 				<artifactId>freedom-fw1</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom</artifactId>
 				<version>${project.version}</version>
 				<type>jar</type>
 			</dependency>

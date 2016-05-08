@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>br.com.cams7.erp</groupId>	
+		<version>1.2.6.5</version>
+		<artifactId>freedom-erp</artifactId>
+	</parent>
+	
+	<artifactId>freedom-modulos</artifactId>
+
+	<name>Módulos</name>
+	<description>Módulos do Freedom ERP</description>
+
+	<packaging>pom</packaging>
+		
+	<properties>
+		<dependency.jars>../../../project-libs</dependency.jars>
+	</properties>
+	
+	<modules>
+		<module>freedom-atd</module>
+		<module>freedom-cfg</module>
+		<module>freedom-crm</module>
+		<module>freedom-fnc</module>
+		<module>freedom-gms</module>
+		<module>freedom-gpe</module>
+		<module>freedom-grh</module>
+		<module>freedom-lvf</module>
+		<module>freedom-pcp</module>
+		<module>freedom-pdv</module>
+		<module>freedom-rep</module>
+		<module>freedom-std</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>				
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>		
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		
+		<pluginManagement>
+			<plugins>								
+			</plugins>
+		</pluginManagement>
+		
+		<plugins>						
+		</plugins>
+	</build>
+	
+	<profiles>		
+	</profiles>
+</project>
+
+
+

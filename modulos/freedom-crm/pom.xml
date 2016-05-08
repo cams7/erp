@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>br.com.cams7.erp</groupId>	
 		<version>1.2.6.5</version>
-		<artifactId>freedom-erp</artifactId>
+		<artifactId>freedom-modulos</artifactId>
 	</parent>
 
-	<artifactId>freedom-ecf</artifactId>
+	<artifactId>freedom-crm</artifactId>
 
-	<name>Freedom ECF</name>
-	<description></description>
+	<name>Freedom CRM</name>
+	<description>CRM (Gestão de Relacionamento com o Cliente)</description>
 
 	<packaging>jar</packaging>
 
@@ -23,36 +23,27 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<dependencies>		
+	<dependencies>	
 		<dependency>
 			<groupId>br.com.cams7.erp</groupId>
-			<artifactId>freedom-infra</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>comm</groupId>
-			<artifactId>comm</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>softwareexpress.sitef</groupId>
-			<artifactId>jclisitef</artifactId>
-		</dependency>
+			<artifactId>freedom</artifactId>
+		</dependency>		
 	</dependencies>
 
 	<build>
-		<finalName>freedomecf</finalName>
+		<finalName>freedomcrm</finalName>
 		<plugins>	
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>					
+				<configuration>
 					<archive>
-						<manifest>	
-							<mainClass>org.freedom.tef.test.driver.dedicate.TesteTef</mainClass>
-						</manifest>						
+						<manifest>
+							<mainClass>org.freedom.modulos.crm.FreedomCRM</mainClass>
+						</manifest>
 					</archive>
 				</configuration>
-			</plugin>			
+			</plugin>
 		</plugins>
 	</build>
 </project>

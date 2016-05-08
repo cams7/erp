@@ -141,7 +141,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
+		<finalName>freedomfw1</finalName>
 		<plugins>	
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
