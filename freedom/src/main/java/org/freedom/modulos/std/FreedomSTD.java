@@ -764,7 +764,7 @@ public class FreedomSTD extends AplicativoPD {
 
 	}
 
-	public static void main(String params[]) {		
+	public static void main(String params[]) {
 		try {
 			Aplicativo.setLookAndFeel("freedom.ini");
 			FreedomSTD freedom = new FreedomSTD();
