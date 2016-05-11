@@ -43,64 +43,64 @@ public class FGrupoUsu extends FDados implements PostListener, DeleteListener {
 
 	private static final long serialVersionUID = 1L;
 
-	private JTextFieldPad txtCodGrup = new JTextFieldPad( JTextFieldPad.TP_STRING, 8, 0 );
+	private JTextFieldPad txtCodGrup = new JTextFieldPad(JTextFieldPad.TP_STRING, 8, 0);
 
-	private JTextFieldPad txtNomeGrup = new JTextFieldPad( JTextFieldPad.TP_STRING, 50, 0 );
+	private JTextFieldPad txtNomeGrup = new JTextFieldPad(JTextFieldPad.TP_STRING, 50, 0);
 
-	private JTextAreaPad txaComentGrup = new JTextAreaPad( JTextFieldPad.TP_STRING );
+	private JTextAreaPad txaComentGrup = new JTextAreaPad(JTextFieldPad.TP_STRING);
 
-	private JScrollPane spnObs = new JScrollPane( txaComentGrup );
+	private JScrollPane spnObs = new JScrollPane(txaComentGrup);
 
 	public FGrupoUsu() {
 
 		super();
-		setTitulo( "Cadastro de Grupos" );
-		setAtribos( 50, 50, 400, 200 );
+		setTitulo("Cadastro de Grupos");
+		setAtribos(50, 50, 400, 200);
 
-		adicCampo( txtCodGrup, 7, 20, 80, 20, "IDGrpUsu", "ID", ListaCampos.DB_PK, true );
-		adicCampo( txtNomeGrup, 90, 20, 282, 20, "NomeGrpUsu", "Nome", ListaCampos.DB_SI, true );
-		adicDBLiv( txaComentGrup, "ComentGrpUsu", "Comentário", false );
-		adic( new JLabelPad( "Comentário" ), 7, 40, 100, 20 );
-		adic( spnObs, 7, 60, 365, 60 );
-		setListaCampos( false, "GRPUSU", "SG" );
-		lcCampos.addPostListener( this );
-		lcCampos.addDeleteListener( this );
-		lcCampos.setQueryInsert( false );
+		adicCampo(txtCodGrup, 7, 20, 80, 20, "IDGrpUsu", "ID", ListaCampos.DB_PK, true);
+		adicCampo(txtNomeGrup, 90, 20, 282, 20, "NomeGrpUsu", "Nome", ListaCampos.DB_SI, true);
+		adicDBLiv(txaComentGrup, "ComentGrpUsu", "Comentário", false);
+		adic(new JLabelPad("Comentário"), 7, 40, 100, 20);
+		adic(spnObs, 7, 60, 365, 60);
+		setListaCampos(false, "GRPUSU", "SG");
+		lcCampos.addPostListener(this);
+		lcCampos.addDeleteListener(this);
+		lcCampos.setQueryInsert(false);
 	}
 
-	public void beforePost( PostEvent pevt ) {
+	public void beforePost(PostEvent pevt) {
 
-		if ( lcCampos.getStatus() != ListaCampos.LCS_INSERT )
+		if (lcCampos.getStatus() != ListaCampos.LCS_INSERT)
 			return;
 		try {
-			PreparedStatement ps = con.prepareStatement( "CREATE ROLE " + txtCodGrup.getVlrString() );
+			PreparedStatement ps = con.prepareStatement("CREATE ROLE " + txtCodGrup.getVlrString());
 			ps.execute();
 			ps.close();
 			con.commit();
-		} catch ( SQLException err ) {
-			Funcoes.mensagemInforma( this, "Não foi possível criar grupo no banco de dados.\n" + err );
+		} catch (SQLException err) {
+			Funcoes.mensagemInforma(this, "Não foi possível criar grupo no banco de dados.\n" + err);
 			pevt.cancela();
 		}
 	}
 
-	public void beforeDelete( DeleteEvent devt ) {
+	public void beforeDelete(DeleteEvent devt) {
 
 		try {
-			PreparedStatement ps = con.prepareStatement( "DROP ROLE " + txtCodGrup.getVlrString() );
+			PreparedStatement ps = con.prepareStatement("DROP ROLE " + txtCodGrup.getVlrString());
 			ps.execute();
 			ps.close();
 			con.commit();
-		} catch ( SQLException err ) {
-			Funcoes.mensagemInforma( this, "Não foi possível excluir o grupo no banco de dados.\n" + err );
+		} catch (SQLException err) {
+			Funcoes.mensagemInforma(this, "Não foi possível excluir o grupo no banco de dados.\n" + err);
 			devt.cancela();
 		}
 	}
 
-	public void afterPost( PostEvent pevt ) {
+	public void afterPost(PostEvent pevt) {
 
 	}
 
-	public void afterDelete( DeleteEvent devt ) {
+	public void afterDelete(DeleteEvent devt) {
 
 	}
 }

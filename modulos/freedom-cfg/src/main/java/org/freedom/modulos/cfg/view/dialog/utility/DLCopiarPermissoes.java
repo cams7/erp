@@ -38,74 +38,73 @@ public class DLCopiarPermissoes extends FDialogo {
 
 	private static final long serialVersionUID = 1L;
 
-	private JTextFieldPad txtCodUsu = new JTextFieldPad( JTextFieldPad.TP_STRING, 8, 0 );
+	private JTextFieldPad txtCodUsu = new JTextFieldPad(JTextFieldPad.TP_STRING, 8, 0);
 
-	private JTextFieldFK txtNomeUsu = new JTextFieldFK( JTextFieldPad.TP_STRING, 50, 0 );
+	private JTextFieldFK txtNomeUsu = new JTextFieldFK(JTextFieldPad.TP_STRING, 50, 0);
 
-	private ListaCampos lcUsuario = new ListaCampos( this );
-	
+	private ListaCampos lcUsuario = new ListaCampos(this);
+
 	private String usuario;
 
-	private String tipoPessoa;
-	private String cnpjAtual;
-	private boolean permiteMesmoCnpj;
+	// private String tipoPessoa;
+	// private String cnpjAtual;
+	// private boolean permiteMesmoCnpj;
+
 	public DLCopiarPermissoes() {
 		super();
-		setTitulo( "Copiar Permissões de qual usuário?" );
-		setAtribos( 400, 130 );
+		setTitulo("Copiar Permissões de qual usuário?");
+		setAtribos(400, 130);
 		this.montaListaCampos();
 		this.montaTela();
 	}
-	
+
 	public void montaListaCampos() {
 
-		txtCodUsu.setNomeCampo( "IdUsuario" );
-		lcUsuario.add( new GuardaCampo( txtCodUsu, "IDUSU", "ID Usuario", ListaCampos.DB_PK, txtNomeUsu, false ) );
-		lcUsuario.add( new GuardaCampo( txtNomeUsu, "NOMEUSU", "Nome", ListaCampos.DB_SI, false ) );
-		lcUsuario.montaSql( false, "USUARIO", "SG" );
-		lcUsuario.setQueryCommit( false );
-		lcUsuario.setReadOnly( true );
-		txtCodUsu.setChave( ListaCampos.DB_PK );
-		txtCodUsu.setListaCampos( lcUsuario );
-		txtNomeUsu.setListaCampos( lcUsuario );
-		txtCodUsu.setTabelaExterna( lcUsuario, null );
-		txtCodUsu.setNomeCampo( "idusu" );
+		txtCodUsu.setNomeCampo("IdUsuario");
+		lcUsuario.add(new GuardaCampo(txtCodUsu, "IDUSU", "ID Usuario", ListaCampos.DB_PK, txtNomeUsu, false));
+		lcUsuario.add(new GuardaCampo(txtNomeUsu, "NOMEUSU", "Nome", ListaCampos.DB_SI, false));
+		lcUsuario.montaSql(false, "USUARIO", "SG");
+		lcUsuario.setQueryCommit(false);
+		lcUsuario.setReadOnly(true);
+		txtCodUsu.setChave(ListaCampos.DB_PK);
+		txtCodUsu.setListaCampos(lcUsuario);
+		txtNomeUsu.setListaCampos(lcUsuario);
+		txtCodUsu.setTabelaExterna(lcUsuario, null);
+		txtCodUsu.setNomeCampo("idusu");
 
 	}
 
 	private void montaTela() {
 
-		adic( new JLabelPad( "ID Usuário" ), 7, 0, 100, 20 );
-		adic( txtCodUsu, 7, 20, 100, 20 );
-		adic( new JLabelPad( "Nome" ), 110, 0, 250, 20 );
-		adic( txtNomeUsu, 110, 20, 250, 20 );
-	}
-	
-	
-	@ Override
-	public void setConexao( DbConnection cn ) {
-		lcUsuario.setConexao( cn );
-		
-		super.setConexao( cn );
+		adic(new JLabelPad("ID Usuário"), 7, 0, 100, 20);
+		adic(txtCodUsu, 7, 20, 100, 20);
+		adic(new JLabelPad("Nome"), 110, 0, 250, 20);
+		adic(txtNomeUsu, 110, 20, 250, 20);
 	}
 
+	@Override
+	public void setConexao(DbConnection cn) {
+		lcUsuario.setConexao(cn);
 
-	@ Override
-	public void actionPerformed( ActionEvent evt ) {
+		super.setConexao(cn);
+	}
 
-		if(evt.getSource() == btOK){
-			if("".equals( txtCodUsu.getVlrString())) {
-				Funcoes.mensagemInforma( this, "Selecione o usuário!!!");
+	@Override
+	public void actionPerformed(ActionEvent evt) {
+
+		if (evt.getSource() == btOK) {
+			if ("".equals(txtCodUsu.getVlrString())) {
+				Funcoes.mensagemInforma(this, "Selecione o usuário!!!");
 				return;
 			}
 		}
-		this.usuario = txtCodUsu.getVlrString(); 
-		
-		super.actionPerformed( evt );
+		this.usuario = txtCodUsu.getVlrString();
+
+		super.actionPerformed(evt);
 	}
-	
+
 	public String getUsuario() {
-		
+
 		return usuario;
 	}
 

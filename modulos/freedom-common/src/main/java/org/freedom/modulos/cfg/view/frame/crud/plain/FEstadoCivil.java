@@ -35,35 +35,36 @@ public class FEstadoCivil extends FDados implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	private JTextFieldPad txtCodEstCivil = new JTextFieldPad( JTextFieldPad.TP_STRING, 2, 0 );
+	private JTextFieldPad txtCodEstCivil = new JTextFieldPad(JTextFieldPad.TP_STRING, 2, 0);
 
-	private JTextFieldPad txtDescEstCivil = new JTextFieldPad( JTextFieldPad.TP_STRING, 50, 0 );
+	private JTextFieldPad txtDescEstCivil = new JTextFieldPad(JTextFieldPad.TP_STRING, 50, 0);
 
 	public FEstadoCivil() {
 
 		super();
-		setTitulo( "Cadastro de estados civis" );
-		setAtribos( 50, 50, 380, 135 );
-		adicCampo( txtCodEstCivil, 7, 20, 70, 20, "CodEstCivil", "Cód.E.Civil", ListaCampos.DB_PK, true );
-		adicCampo( txtDescEstCivil, 80, 20, 250, 20, "DescEstCivil", "Descrição do estado civil", ListaCampos.DB_SI, true );
-		setListaCampos( false, "ESTCIVIL", "SG" );
-		btImp.addActionListener( this );
-		btPrevimp.addActionListener( this );
-		lcCampos.setQueryInsert( false );
+		setTitulo("Cadastro de estados civis");
+		setAtribos(50, 50, 380, 135);
+		adicCampo(txtCodEstCivil, 7, 20, 70, 20, "CodEstCivil", "Cód.E.Civil", ListaCampos.DB_PK, true);
+		adicCampo(txtDescEstCivil, 80, 20, 250, 20, "DescEstCivil", "Descrição do estado civil", ListaCampos.DB_SI,
+				true);
+		setListaCampos(false, "ESTCIVIL", "SG");
+		btImp.addActionListener(this);
+		btPrevimp.addActionListener(this);
+		lcCampos.setQueryInsert(false);
 
-		setImprimir( true );
+		setImprimir(true);
 	}
 
-	public void actionPerformed( ActionEvent evt ) {
+	public void actionPerformed(ActionEvent evt) {
 
-		if ( evt.getSource() == btPrevimp )
-			imprimir( TYPE_PRINT.VIEW );
-		else if ( evt.getSource() == btImp )
-			imprimir( TYPE_PRINT.PRINT);
-		super.actionPerformed( evt );
+		if (evt.getSource() == btPrevimp)
+			imprimir(TYPE_PRINT.VIEW);
+		else if (evt.getSource() == btImp)
+			imprimir(TYPE_PRINT.PRINT);
+		super.actionPerformed(evt);
 	}
 
-	private void imprimir( TYPE_PRINT bVisualizar ) {
+	private void imprimir(TYPE_PRINT bVisualizar) {
 
 	}
 }

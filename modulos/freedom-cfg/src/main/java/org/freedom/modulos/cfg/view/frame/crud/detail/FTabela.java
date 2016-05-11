@@ -42,69 +42,69 @@ public class FTabela extends FDetalhe implements InsertListener, ActionListener 
 
 	private JPanelPad pinDet = new JPanelPad();
 
-	private JTextFieldPad txtCodTb = new JTextFieldPad( JTextFieldPad.TP_INTEGER, 5, 0 );
+	private JTextFieldPad txtCodTb = new JTextFieldPad(JTextFieldPad.TP_INTEGER, 5, 0);
 
-	private JTextFieldPad txtDescTb = new JTextFieldPad( JTextFieldPad.TP_STRING, 50, 0 );
+	private JTextFieldPad txtDescTb = new JTextFieldPad(JTextFieldPad.TP_STRING, 50, 0);
 
-	private JTextFieldPad txtSiglaTb = new JTextFieldPad( JTextFieldPad.TP_STRING, 10, 0 );
+	private JTextFieldPad txtSiglaTb = new JTextFieldPad(JTextFieldPad.TP_STRING, 10, 0);
 
-	private JTextFieldPad txtCodItTb = new JTextFieldPad( JTextFieldPad.TP_INTEGER, 5, 0 );
+	private JTextFieldPad txtCodItTb = new JTextFieldPad(JTextFieldPad.TP_INTEGER, 5, 0);
 
-	private JTextFieldPad txtDescItTb = new JTextFieldPad( JTextFieldPad.TP_STRING, 50, 0 );
+	private JTextFieldPad txtDescItTb = new JTextFieldPad(JTextFieldPad.TP_STRING, 50, 0);
 
 	private JCheckBoxPad cbPadrao = null;
 
 	public FTabela() {
 
-		setTitulo( "Cadastro de Tabelas auxiliares" );
-		setAtribos( 50, 20, 500, 350 );
-		setAltCab( 90 );
-		pinCab = new JPanelPad( 500, 90 );
-		setListaCampos( lcCampos );
-		setPainel( pinCab, pnCliCab );
+		setTitulo("Cadastro de Tabelas auxiliares");
+		setAtribos(50, 20, 500, 350);
+		setAltCab(90);
+		pinCab = new JPanelPad(500, 90);
+		setListaCampos(lcCampos);
+		setPainel(pinCab, pnCliCab);
 
-		adicCampo( txtCodTb, 7, 20, 70, 20, "CodTb", "Cód.tab.", ListaCampos.DB_PK, true );
-		adicCampo( txtDescTb, 80, 20, 297, 20, "DescTb", "Descrição da tabela", ListaCampos.DB_SI, true );
-		adicCampo( txtSiglaTb, 380, 20, 80, 20, "SiglaTb", "Sigla", ListaCampos.DB_SI, true );
+		adicCampo(txtCodTb, 7, 20, 70, 20, "CodTb", "Cód.tab.", ListaCampos.DB_PK, true);
+		adicCampo(txtDescTb, 80, 20, 297, 20, "DescTb", "Descrição da tabela", ListaCampos.DB_SI, true);
+		adicCampo(txtSiglaTb, 380, 20, 80, 20, "SiglaTb", "Sigla", ListaCampos.DB_SI, true);
 
-		setListaCampos( true, "TABELA", "SG" );
-		lcCampos.setQueryInsert( false );
-		setAltDet( 60 );
-		pinDet = new JPanelPad( 590, 110 );
-		setPainel( pinDet, pnDet );
-		setListaCampos( lcDet );
-		setNavegador( navRod );
+		setListaCampos(true, "TABELA", "SG");
+		lcCampos.setQueryInsert(false);
+		setAltDet(60);
+		pinDet = new JPanelPad(590, 110);
+		setPainel(pinDet, pnDet);
+		setListaCampos(lcDet);
+		setNavegador(navRod);
 
-		cbPadrao = new JCheckBoxPad( "Padrão", "S", "N" );
-		cbPadrao.setVlrString( "N" );
+		cbPadrao = new JCheckBoxPad("Padrão", "S", "N");
+		cbPadrao.setVlrString("N");
 
-		adicCampo( txtCodItTb, 7, 20, 70, 20, "CodItTb", "Item", ListaCampos.DB_PK, true );
-		adicCampo( txtDescItTb, 80, 20, 280, 20, "DescItTb", "Descrição do item", ListaCampos.DB_SI, true );
-		adicDB( cbPadrao, 365, 20, 90, 20, "PadraoIttb", "", true );
+		adicCampo(txtCodItTb, 7, 20, 70, 20, "CodItTb", "Item", ListaCampos.DB_PK, true);
+		adicCampo(txtDescItTb, 80, 20, 280, 20, "DescItTb", "Descrição do item", ListaCampos.DB_SI, true);
+		adicDB(cbPadrao, 365, 20, 90, 20, "PadraoIttb", "", true);
 
-		setListaCampos( true, "ITTABELA", "SG" );
-		lcCampos.setQueryInsert( false );
+		setListaCampos(true, "ITTABELA", "SG");
+		lcCampos.setQueryInsert(false);
 		montaTab();
 
-		tab.setTamColuna( 70, 0 );
-		tab.setTamColuna( 395, 1 );
-		tab.setTamColuna( 20, 2 );
+		tab.setTamColuna(70, 0);
+		tab.setTamColuna(395, 1);
+		tab.setTamColuna(20, 2);
 
-		lcCampos.addInsertListener( this );
-		btImp.addActionListener( this );
-		btPrevimp.addActionListener( this );
+		lcCampos.addInsertListener(this);
+		btImp.addActionListener(this);
+		btPrevimp.addActionListener(this);
 	}
 
-	public void actionPerformed( ActionEvent evt ) {
+	public void actionPerformed(ActionEvent evt) {
 
-		super.actionPerformed( evt );
+		super.actionPerformed(evt);
 	}
 
-	public void afterInsert( InsertEvent ievt ) {
+	public void afterInsert(InsertEvent ievt) {
 
 	}
 
-	public void beforeInsert( InsertEvent ievt ) {
+	public void beforeInsert(InsertEvent ievt) {
 
 	}
 

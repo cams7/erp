@@ -41,26 +41,26 @@ public class FVisual extends FFilho {
 
 	private Vector<?> vValLookAndFeel = new Vector<Object>();
 
-	private JLabelPad lbLookAndFeel = new JLabelPad( "Selecione o visual desejado" );
+	private JLabelPad lbLookAndFeel = new JLabelPad("Selecione o visual desejado");
 
-	private JPanelPad pnCli = new JPanelPad( JPanelPad.TP_JPANEL, new BorderLayout() );
+	private JPanelPad pnCli = new JPanelPad(JPanelPad.TP_JPANEL, new BorderLayout());
 
 	// public FVisual(boolean comScroll) {
 	public FVisual() {
 
-		super( true );
-		setTitulo( "Configuração de Visual" );
-		setAtribos( 10, 10, 300, 200 );
+		super(true);
+		setTitulo("Configuração de Visual");
+		setAtribos(10, 10, 300, 200);
 
 		Container c = getContentPane();
 
-		c.setLayout( new BorderLayout() );
+		c.setLayout(new BorderLayout());
 
-		c.add( pnCli, BorderLayout.CENTER );
+		c.add(pnCli, BorderLayout.CENTER);
 
-		cbLookAndFeel = new JComboBoxPad( vDescLookAndFeel, vValLookAndFeel, JComboBoxPad.TP_STRING, 100, 0 );
-		pnCli.adic( lbLookAndFeel, 30, 30, 100, 20 );
-		pnCli.adic( cbLookAndFeel, 60, 60, 100, 20 );
+		cbLookAndFeel = new JComboBoxPad(vDescLookAndFeel, vValLookAndFeel, JComboBoxPad.TP_STRING, 100, 0);
+		pnCli.adic(lbLookAndFeel, 30, 30, 100, 20);
+		pnCli.adic(cbLookAndFeel, 60, 60, 100, 20);
 
 	}
 

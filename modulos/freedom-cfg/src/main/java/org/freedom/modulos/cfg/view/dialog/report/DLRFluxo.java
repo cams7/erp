@@ -36,33 +36,33 @@ public class DLRFluxo extends FFDialogo {
 
 	private JRadioGroup<?, ?> rgOrdem = null;
 
-	private JLabelPad lbOrdem = new JLabelPad( "Ordenar por:" );
+	private JLabelPad lbOrdem = new JLabelPad("Ordenar por:");
 
 	private Vector<String> vLabs = new Vector<String>();
 
 	private Vector<String> vVals = new Vector<String>();
 
-	public DLRFluxo( Component cOrig ) {
+	public DLRFluxo(Component cOrig) {
 
-		super( cOrig );
-		setTitulo( "Ordem do Relatório" );
-		setAtribos( 300, 140 );
-		vLabs.addElement( "Código" );
-		vLabs.addElement( "Descrição" );
-		vVals.addElement( "C" );
-		vVals.addElement( "D" );
-		rgOrdem = new JRadioGroup<String, String>( 1, 2, vLabs, vVals );
-		rgOrdem.setVlrString( "D" );
-		adic( lbOrdem, 7, 0, 80, 15 );
-		adic( rgOrdem, 7, 20, 280, 30 );
+		super(cOrig);
+		setTitulo("Ordem do Relatório");
+		setAtribos(300, 140);
+		vLabs.addElement("Código");
+		vLabs.addElement("Descrição");
+		vVals.addElement("C");
+		vVals.addElement("D");
+		rgOrdem = new JRadioGroup<String, String>(1, 2, vLabs, vVals);
+		rgOrdem.setVlrString("D");
+		adic(lbOrdem, 7, 0, 80, 15);
+		adic(rgOrdem, 7, 20, 280, 30);
 	}
 
 	public String getValor() {
 
 		String sRetorno = "";
-		if ( rgOrdem.getVlrString().compareTo( "C" ) == 0 )
+		if (rgOrdem.getVlrString().compareTo("C") == 0)
 			sRetorno = "CODFLUXO";
-		else if ( rgOrdem.getVlrString().compareTo( "D" ) == 0 )
+		else if (rgOrdem.getVlrString().compareTo("D") == 0)
 			sRetorno = "DESCFLUXO";
 		return sRetorno;
 	}

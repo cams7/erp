@@ -46,17 +46,17 @@ public class FFluxo extends FDetalhe implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	private JTextFieldPad txtCodFluxo = new JTextFieldPad( JTextFieldPad.TP_INTEGER, 5, 0 );
+	private JTextFieldPad txtCodFluxo = new JTextFieldPad(JTextFieldPad.TP_INTEGER, 5, 0);
 
-	private JTextFieldPad txtDescFluxo = new JTextFieldPad( JTextFieldPad.TP_STRING, 50, 0 );
+	private JTextFieldPad txtDescFluxo = new JTextFieldPad(JTextFieldPad.TP_STRING, 50, 0);
 
-	private JTextFieldPad txtCodProc = new JTextFieldPad( JTextFieldPad.TP_INTEGER, 8, 0 );
+	private JTextFieldPad txtCodProc = new JTextFieldPad(JTextFieldPad.TP_INTEGER, 8, 0);
 
-	private JTextFieldFK txtDescProc = new JTextFieldFK( JTextFieldPad.TP_STRING, 50, 0 );
+	private JTextFieldFK txtDescProc = new JTextFieldFK(JTextFieldPad.TP_STRING, 50, 0);
 
-	private JTextFieldPad txtCodItem = new JTextFieldPad( JTextFieldPad.TP_INTEGER, 8, 0 );
+	private JTextFieldPad txtCodItem = new JTextFieldPad(JTextFieldPad.TP_INTEGER, 8, 0);
 
-	private ListaCampos lcProc = new ListaCampos( this, "PC" );
+	private ListaCampos lcProc = new ListaCampos(this, "PC");
 
 	private JPanelPad pinCab = new JPanelPad();
 
@@ -64,71 +64,70 @@ public class FFluxo extends FDetalhe implements ActionListener {
 
 	public FFluxo() {
 
-		setTitulo( "Cadastro Fluxos" );
-		setAtribos( 50, 50, 450, 350 );
+		setTitulo("Cadastro Fluxos");
+		setAtribos(50, 50, 450, 350);
 
-		setAltCab( 90 );
-		pinCab = new JPanelPad( 420, 90 );
-		setListaCampos( lcCampos );
-		setPainel( pinCab, pnCliCab );
+		setAltCab(90);
+		pinCab = new JPanelPad(420, 90);
+		setListaCampos(lcCampos);
+		setPainel(pinCab, pnCliCab);
 
-		lcProc.add( new GuardaCampo( txtCodProc, "CodProc", "Cód.proc.", ListaCampos.DB_PK, true ) );
-		lcProc.add( new GuardaCampo( txtDescProc, "DescProc", "Descrição do processo", ListaCampos.DB_SI, false ) );
-		lcProc.montaSql( false, "PROCESSO", "SG" );
-		lcProc.setQueryCommit( false );
-		lcProc.setReadOnly( true );
-		txtCodProc.setTabelaExterna( lcProc, FProcesso.class.getCanonicalName() );
+		lcProc.add(new GuardaCampo(txtCodProc, "CodProc", "Cód.proc.", ListaCampos.DB_PK, true));
+		lcProc.add(new GuardaCampo(txtDescProc, "DescProc", "Descrição do processo", ListaCampos.DB_SI, false));
+		lcProc.montaSql(false, "PROCESSO", "SG");
+		lcProc.setQueryCommit(false);
+		lcProc.setReadOnly(true);
+		txtCodProc.setTabelaExterna(lcProc, FProcesso.class.getCanonicalName());
 
-		adicCampo( txtCodFluxo, 7, 20, 70, 20, "CodFluxo", "Cód.fluxo", ListaCampos.DB_PK, true );
-		adicCampo( txtDescFluxo, 80, 20, 230, 20, "DescFluxo", "Descrição do fluxo", ListaCampos.DB_SI, true );
-		setListaCampos( true, "FLUXO", "SG" );
+		adicCampo(txtCodFluxo, 7, 20, 70, 20, "CodFluxo", "Cód.fluxo", ListaCampos.DB_PK, true);
+		adicCampo(txtDescFluxo, 80, 20, 230, 20, "DescFluxo", "Descrição do fluxo", ListaCampos.DB_SI, true);
+		setListaCampos(true, "FLUXO", "SG");
 
-		setAltDet( 60 );
-		setPainel( pinDet, pnDet );
-		setListaCampos( lcDet );
-		setNavegador( navRod );
+		setAltDet(60);
+		setPainel(pinDet, pnDet);
+		setListaCampos(lcDet);
+		setNavegador(navRod);
 
-		adicCampo( txtCodItem, 7, 20, 40, 20, "SeqItFluxo", "Item", ListaCampos.DB_PK, true );
-		adicCampo( txtCodProc, 50, 20, 70, 20, "CodProc", "Cód.proc.", ListaCampos.DB_FK, txtDescProc, true );
-		adicDescFK( txtDescProc, 123, 20, 230, 20, "DescProc", "Descrição do processo" );
-		setListaCampos( true, "ITFLUXO", "SG" );
+		adicCampo(txtCodItem, 7, 20, 40, 20, "SeqItFluxo", "Item", ListaCampos.DB_PK, true);
+		adicCampo(txtCodProc, 50, 20, 70, 20, "CodProc", "Cód.proc.", ListaCampos.DB_FK, txtDescProc, true);
+		adicDescFK(txtDescProc, 123, 20, 230, 20, "DescProc", "Descrição do processo");
+		setListaCampos(true, "ITFLUXO", "SG");
 
 		montaTab();
-		tab.setTamColuna( 40, 0 );
-		tab.setTamColuna( 45, 1 );
-		tab.setTamColuna( 350, 2 );
+		tab.setTamColuna(40, 0);
+		tab.setTamColuna(45, 1);
+		tab.setTamColuna(350, 2);
 
-		btImp.addActionListener( this );
-		btPrevimp.addActionListener( this );
-		setImprimir( true );
+		btImp.addActionListener(this);
+		btPrevimp.addActionListener(this);
+		setImprimir(true);
 
 	}
 
-	public void actionPerformed( ActionEvent evt ) {
+	public void actionPerformed(ActionEvent evt) {
 
-		if ( evt.getSource() == btPrevimp ) {
-			imprimir( TYPE_PRINT.VIEW );
-		}
-		else if ( evt.getSource() == btImp )
-			imprimir( TYPE_PRINT.PRINT);
-		super.actionPerformed( evt );
+		if (evt.getSource() == btPrevimp) {
+			imprimir(TYPE_PRINT.VIEW);
+		} else if (evt.getSource() == btImp)
+			imprimir(TYPE_PRINT.PRINT);
+		super.actionPerformed(evt);
 	}
 
-	public void setConexao( DbConnection cn ) {
+	public void setConexao(DbConnection cn) {
 
-		super.setConexao( cn );
-		lcProc.setConexao( cn );
+		super.setConexao(cn);
+		lcProc.setConexao(cn);
 	}
 
-	private void imprimir( TYPE_PRINT bVisualizar ) {
+	private void imprimir(TYPE_PRINT bVisualizar) {
 
-		ImprimeOS imp = new ImprimeOS( "", con );
+		ImprimeOS imp = new ImprimeOS("", con);
 		int linPag = imp.verifLinPag() - 1;
 		imp.montaCab();
-		imp.setTitulo( "Relatório de Fluxos" );
-		DLRFluxo dl = new DLRFluxo( this );
-		dl.setVisible( true );
-		if ( dl.OK == false ) {
+		imp.setTitulo("Relatório de Fluxos");
+		DLRFluxo dl = new DLRFluxo(this);
+		dl.setVisible(true);
+		if (dl.OK == false) {
 			dl.dispose();
 			return;
 		}
@@ -136,43 +135,42 @@ public class FFluxo extends FDetalhe implements ActionListener {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			ps = con.prepareStatement( sSQL );
+			ps = con.prepareStatement(sSQL);
 			rs = ps.executeQuery();
 			imp.limpaPags();
-			while ( rs.next() ) {
-				if ( imp.pRow() == 0 ) {
-					imp.impCab( 80, false );
-					imp.say( imp.pRow() + 0, 0, "" + imp.normal() );
-					imp.say( imp.pRow() + 0, 0, "" );
-					imp.say( imp.pRow() + 0, 2, "Código" );
-					imp.say( imp.pRow() + 0, 25, "Descrição" );
-					imp.say( imp.pRow() + 1, 0, "" + imp.normal() );
-					imp.say( imp.pRow() + 0, 0, StringFunctions.replicate( "-", 79 ) );
+			while (rs.next()) {
+				if (imp.pRow() == 0) {
+					imp.impCab(80, false);
+					imp.say(imp.pRow() + 0, 0, "" + imp.normal());
+					imp.say(imp.pRow() + 0, 0, "");
+					imp.say(imp.pRow() + 0, 2, "Código");
+					imp.say(imp.pRow() + 0, 25, "Descrição");
+					imp.say(imp.pRow() + 1, 0, "" + imp.normal());
+					imp.say(imp.pRow() + 0, 0, StringFunctions.replicate("-", 79));
 				}
-				imp.say( imp.pRow() + 1, 0, "" + imp.normal() );
-				imp.say( imp.pRow() + 0, 2, rs.getString( "CodFluxo" ) );
-				imp.say( imp.pRow() + 0, 25, rs.getString( "DescFluxo" ) );
-				if ( imp.pRow() >= linPag ) {
+				imp.say(imp.pRow() + 1, 0, "" + imp.normal());
+				imp.say(imp.pRow() + 0, 2, rs.getString("CodFluxo"));
+				imp.say(imp.pRow() + 0, 25, rs.getString("DescFluxo"));
+				if (imp.pRow() >= linPag) {
 					imp.incPags();
 					imp.eject();
 				}
 			}
 
-			imp.say( imp.pRow() + 1, 0, "" + imp.normal() );
-			imp.say( imp.pRow() + 0, 0, StringFunctions.replicate( "=", 79 ) );
+			imp.say(imp.pRow() + 1, 0, "" + imp.normal());
+			imp.say(imp.pRow() + 0, 0, StringFunctions.replicate("=", 79));
 			imp.eject();
 
 			imp.fechaGravacao();
 			con.commit();
 			dl.dispose();
-		} catch ( SQLException err ) {
-			Funcoes.mensagemErro( this, "Erro consulta tabela de fluxos!\n" + err.getMessage(), true, con, err );
+		} catch (SQLException err) {
+			Funcoes.mensagemErro(this, "Erro consulta tabela de fluxos!\n" + err.getMessage(), true, con, err);
 		}
 
-		if ( bVisualizar==TYPE_PRINT.VIEW ) {
-			imp.preview( this );
-		}
-		else {
+		if (bVisualizar == TYPE_PRINT.VIEW) {
+			imp.preview(this);
+		} else {
 			imp.print();
 		}
 	}

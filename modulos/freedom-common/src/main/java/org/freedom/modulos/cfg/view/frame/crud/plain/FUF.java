@@ -49,34 +49,34 @@ public class FUF extends FDados {
 
 	private static final long serialVersionUID = 1L;
 
-	private JTextFieldPad txtSigla = new JTextFieldPad( JTextFieldPad.TP_STRING, 2, 0 );
+	private JTextFieldPad txtSigla = new JTextFieldPad(JTextFieldPad.TP_STRING, 2, 0);
 
-	private JTextFieldPad txtNomeUF = new JTextFieldPad( JTextFieldPad.TP_STRING, 80, 0 );
+	private JTextFieldPad txtNomeUF = new JTextFieldPad(JTextFieldPad.TP_STRING, 80, 0);
 
-	private JTextFieldPad txtCodUf = new JTextFieldPad( JTextFieldPad.TP_INTEGER, 2, 0 );
+	private JTextFieldPad txtCodUf = new JTextFieldPad(JTextFieldPad.TP_INTEGER, 2, 0);
 
-	private JTextFieldPad txtCodPais = new JTextFieldPad( JTextFieldPad.TP_STRING, 10, 0 );
+	private JTextFieldPad txtCodPais = new JTextFieldPad(JTextFieldPad.TP_STRING, 10, 0);
 
-	private JTextFieldFK txtNomePais = new JTextFieldFK( JTextFieldPad.TP_STRING, 50, 0 );
+	private JTextFieldFK txtNomePais = new JTextFieldFK(JTextFieldPad.TP_STRING, 50, 0);
 
 	private JRadioGroup<?, ?> rgRegiao = null;
 
-	private ListaCampos lcPais = new ListaCampos( this );
+	private ListaCampos lcPais = new ListaCampos(this);
 
 	public FUF() {
 
 		super();
-		setTitulo( "Cadastro de UF" );
-		setAtribos( 50, 50, 370, 250 );
+		setTitulo("Cadastro de UF");
+		setAtribos(50, 50, 370, 250);
 
-		lcCampos.setUsaME( false );
+		lcCampos.setUsaME(false);
 
-		btImp.addActionListener( this );
-		btPrevimp.addActionListener( this );
+		btImp.addActionListener(this);
+		btPrevimp.addActionListener(this);
 		montaTela();
 		montaListaCampos();
 
-		setImprimir( true );
+		setImprimir(true);
 	}
 
 	private void montaTela() {
@@ -84,53 +84,52 @@ public class FUF extends FDados {
 		Vector<String> vVals = new Vector<String>();
 		Vector<String> vLabs = new Vector<String>();
 
-		vLabs.addElement( "Norte" );
-		vLabs.addElement( "Nordeste" );
-		vLabs.addElement( "Sul" );
-		vLabs.addElement( "Sudeste" );
-		vLabs.addElement( "Centro Oeste" );
-		vVals.addElement( "N" );
-		vVals.addElement( "NE" );
-		vVals.addElement( "S" );
-		vVals.addElement( "SE" );
-		vVals.addElement( "CO" );
-		rgRegiao = new JRadioGroup<String, String>( 2, 3, vLabs, vVals );
+		vLabs.addElement("Norte");
+		vLabs.addElement("Nordeste");
+		vLabs.addElement("Sul");
+		vLabs.addElement("Sudeste");
+		vLabs.addElement("Centro Oeste");
+		vVals.addElement("N");
+		vVals.addElement("NE");
+		vVals.addElement("S");
+		vVals.addElement("SE");
+		vVals.addElement("CO");
+		rgRegiao = new JRadioGroup<String, String>(2, 3, vLabs, vVals);
 
-		adicCampo( txtSigla, 7, 20, 60, 20, "SiglaUf", "UF", ListaCampos.DB_PK, true );
-		adicCampo( txtCodPais, 70, 20, 60, 20, "CodPais", "Cód.País", ListaCampos.DB_PF, txtNomePais, true );
-		adicDescFK( txtNomePais, 133, 20, 200, 20, "NomePais", "Nome do país" );
-		adicCampo( txtNomeUF, 7, 60, 273, 20, "NomeUF", "Nome", ListaCampos.DB_SI, true );
-		adicCampo( txtCodUf, 283, 60, 50, 20, "CodUf", "Cód.Uf", ListaCampos.DB_SI, true );
-		adicDB( rgRegiao, 7, 100, 325, 60, "RegiaoUF", "Região", true );
-		setListaCampos( false, "UF", "SG" );
+		adicCampo(txtSigla, 7, 20, 60, 20, "SiglaUf", "UF", ListaCampos.DB_PK, true);
+		adicCampo(txtCodPais, 70, 20, 60, 20, "CodPais", "Cód.País", ListaCampos.DB_PF, txtNomePais, true);
+		adicDescFK(txtNomePais, 133, 20, 200, 20, "NomePais", "Nome do país");
+		adicCampo(txtNomeUF, 7, 60, 273, 20, "NomeUF", "Nome", ListaCampos.DB_SI, true);
+		adicCampo(txtCodUf, 283, 60, 50, 20, "CodUf", "Cód.Uf", ListaCampos.DB_SI, true);
+		adicDB(rgRegiao, 7, 100, 325, 60, "RegiaoUF", "Região", true);
+		setListaCampos(false, "UF", "SG");
 
 	}
 
 	private void montaListaCampos() {
 
-		lcPais.setUsaME( false );
+		lcPais.setUsaME(false);
 
-		lcPais.add( new GuardaCampo( txtCodPais, "Codpais", "Cód.pais.", ListaCampos.DB_PK, false ) );
-		lcPais.add( new GuardaCampo( txtNomePais, "NomePais", "Descrição do país", ListaCampos.DB_SI, false ) );
-		lcPais.montaSql( false, "PAIS", "SG" );
-		lcPais.setQueryCommit( false );
-		lcPais.setReadOnly( true );
-		txtCodPais.setTabelaExterna( lcPais, FPais.class.getCanonicalName() );
+		lcPais.add(new GuardaCampo(txtCodPais, "Codpais", "Cód.pais.", ListaCampos.DB_PK, false));
+		lcPais.add(new GuardaCampo(txtNomePais, "NomePais", "Descrição do país", ListaCampos.DB_SI, false));
+		lcPais.montaSql(false, "PAIS", "SG");
+		lcPais.setQueryCommit(false);
+		lcPais.setReadOnly(true);
+		txtCodPais.setTabelaExterna(lcPais, FPais.class.getCanonicalName());
 	}
 
-	public void actionPerformed( ActionEvent evt ) {
+	public void actionPerformed(ActionEvent evt) {
 
-		if ( evt.getSource() == btPrevimp ) {
-			imprimir( TYPE_PRINT.VIEW );
-		}
-		else if ( evt.getSource() == btImp ) {
-			imprimir( TYPE_PRINT.PRINT);
+		if (evt.getSource() == btPrevimp) {
+			imprimir(TYPE_PRINT.VIEW);
+		} else if (evt.getSource() == btImp) {
+			imprimir(TYPE_PRINT.PRINT);
 		}
 
-		super.actionPerformed( evt );
+		super.actionPerformed(evt);
 	}
 
-	private void imprimir( TYPE_PRINT bVisualizar ) {
+	private void imprimir(TYPE_PRINT bVisualizar) {
 
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -139,24 +138,23 @@ public class FUF extends FDados {
 
 		try {
 
-			dl.setVisible( true );
-			if ( dl.OK == false ) {
+			dl.setVisible(true);
+			if (dl.OK == false) {
 				dl.dispose();
 				return;
 			}
 
-			sSQL.append( "SELECT U.SIGLAUF, U.CODPAIS, U.NOMEUF, U.CODUF, U.REGIAOUF, P.NOMEPAIS " );
-			sSQL.append( "FROM SGUF U, SGPAIS P " );
-			sSQL.append( "WHERE U.CODPAIS=P.CODPAIS ORDER BY " + dl.getValor() );
+			sSQL.append("SELECT U.SIGLAUF, U.CODPAIS, U.NOMEUF, U.CODUF, U.REGIAOUF, P.NOMEPAIS ");
+			sSQL.append("FROM SGUF U, SGPAIS P ");
+			sSQL.append("WHERE U.CODPAIS=P.CODPAIS ORDER BY " + dl.getValor());
 
-			ps = con.prepareStatement( sSQL.toString() );
+			ps = con.prepareStatement(sSQL.toString());
 			rs = ps.executeQuery();
 
-			if ( "T".equals( dl.getTipo() ) ) {
-				imprimirTexto( bVisualizar, rs );
-			}
-			else if ( "G".equals( dl.getTipo() ) ) {
-				imprimirGrafico( bVisualizar, rs );
+			if ("T".equals(dl.getTipo())) {
+				imprimirTexto(bVisualizar, rs);
+			} else if ("G".equals(dl.getTipo())) {
+				imprimirGrafico(bVisualizar, rs);
 			}
 
 			rs.close();
@@ -164,17 +162,17 @@ public class FUF extends FDados {
 
 			con.commit();
 			dl.dispose();
-		} catch ( Exception err ) {
-			Funcoes.mensagemErro( this, "Erro ao montar relatório de UF!\n" + err.getMessage(), true, con, err );
+		} catch (Exception err) {
+			Funcoes.mensagemErro(this, "Erro ao montar relatório de UF!\n" + err.getMessage(), true, con, err);
 			err.printStackTrace();
 
 		}
 	}
 
-	private void imprimirTexto( final TYPE_PRINT bVisualizar, final ResultSet rs ) {
+	private void imprimirTexto(final TYPE_PRINT bVisualizar, final ResultSet rs) {
 
-		String sLinhaFina = StringFunctions.replicate( "-", 125 );
-		ImprimeOS imp = new ImprimeOS( "", con );
+		String sLinhaFina = StringFunctions.replicate("-", 125);
+		ImprimeOS imp = new ImprimeOS("", con);
 		int linPag = imp.verifLinPag() - 1;
 		imp.montaCab();
 
@@ -182,96 +180,94 @@ public class FUF extends FDados {
 
 			imp.limpaPags();
 			imp.montaCab();
-			imp.setTitulo( "Relatório de UF" );
+			imp.setTitulo("Relatório de UF");
 
-			while ( rs.next() ) {
+			while (rs.next()) {
 
-				if ( imp.pRow() == linPag ) {
-					imp.pulaLinha( 1, imp.comprimido() );
-					imp.say( 0, "+" + sLinhaFina + "+" );
+				if (imp.pRow() == linPag) {
+					imp.pulaLinha(1, imp.comprimido());
+					imp.say(0, "+" + sLinhaFina + "+");
 					imp.eject();
 					imp.incPags();
 				}
 
-				if ( imp.pRow() == 0 ) {
-					imp.impCab( 126, false );
-					imp.say( 0, imp.normal() );
-					imp.say( 2, "Cód.UF" );
-					imp.say( 10, "|" );
-					imp.say( 14, "Sigla.UF" );
-					imp.say( 24, "|" );
-					imp.say( 28, "Nome.UF" );
-					imp.say( 60, "|" );
-					imp.say( 64, "Região.UF" );
-					imp.say( 75, "|" );
-					imp.say( 79, "Cód País" );
-					imp.say( 89, "|" );
-					imp.say( 93, "Nome País" );
-					imp.say( 126, "|" );
-					imp.pulaLinha( 1, imp.normal() );
-					imp.say( 0, StringFunctions.replicate( "-", 125 ) );
+				if (imp.pRow() == 0) {
+					imp.impCab(126, false);
+					imp.say(0, imp.normal());
+					imp.say(2, "Cód.UF");
+					imp.say(10, "|");
+					imp.say(14, "Sigla.UF");
+					imp.say(24, "|");
+					imp.say(28, "Nome.UF");
+					imp.say(60, "|");
+					imp.say(64, "Região.UF");
+					imp.say(75, "|");
+					imp.say(79, "Cód País");
+					imp.say(89, "|");
+					imp.say(93, "Nome País");
+					imp.say(126, "|");
+					imp.pulaLinha(1, imp.normal());
+					imp.say(0, StringFunctions.replicate("-", 125));
 				}
 
-				imp.pulaLinha( 1, imp.normal() );
-				imp.say( 2, rs.getString( "CodUf" ).trim() );
-				imp.say( 10, "|" );
-				imp.say( 14, rs.getString( "SiglaUf" ).trim() );
-				imp.say( 24, "|" );
-				imp.say( 28, rs.getString( "NomeUf" ).trim() );
-				imp.say( 60, "|" );
-				imp.say( 64, rs.getString( "RegiaoUf" ).trim() );
-				imp.say( 75, "|" );
-				imp.say( 79, rs.getString( "CodPais" ).trim() );
-				imp.say( 89, "|" );
-				imp.say( 93, rs.getString( "NomePais" ).trim() );
-				imp.say( 126, "|" );
+				imp.pulaLinha(1, imp.normal());
+				imp.say(2, rs.getString("CodUf").trim());
+				imp.say(10, "|");
+				imp.say(14, rs.getString("SiglaUf").trim());
+				imp.say(24, "|");
+				imp.say(28, rs.getString("NomeUf").trim());
+				imp.say(60, "|");
+				imp.say(64, rs.getString("RegiaoUf").trim());
+				imp.say(75, "|");
+				imp.say(79, rs.getString("CodPais").trim());
+				imp.say(89, "|");
+				imp.say(93, rs.getString("NomePais").trim());
+				imp.say(126, "|");
 
-				if ( imp.pRow() >= linPag ) {
+				if (imp.pRow() >= linPag) {
 					imp.incPags();
 					imp.eject();
 				}
 			}
 
-			imp.pulaLinha( 1, imp.normal() );
-			imp.say( 0, StringFunctions.replicate( "=", 125 ) );
-			imp.pulaLinha( 1, imp.normal() );
+			imp.pulaLinha(1, imp.normal());
+			imp.say(0, StringFunctions.replicate("=", 125));
+			imp.pulaLinha(1, imp.normal());
 
 			imp.eject();
 			imp.fechaGravacao();
 
-			if ( bVisualizar==TYPE_PRINT.VIEW ) {
-				imp.preview( this );
-			}
-			else {
+			if (bVisualizar == TYPE_PRINT.VIEW) {
+				imp.preview(this);
+			} else {
 				imp.print();
 			}
 
-		} catch ( SQLException err ) {
+		} catch (SQLException err) {
 			err.printStackTrace();
-			Funcoes.mensagemErro( this, "Erro consulta UF!\n" + err.getMessage(), true, con, err );
+			Funcoes.mensagemErro(this, "Erro consulta UF!\n" + err.getMessage(), true, con, err);
 
 		}
 	}
 
-	public void imprimirGrafico( final TYPE_PRINT bVisualizar, final ResultSet rs ) {
+	public void imprimirGrafico(final TYPE_PRINT bVisualizar, final ResultSet rs) {
 
-		FPrinterJob dlGr = new FPrinterJob( "relatorios/RelUF.jasper", "UF", null, rs, null, this );
+		FPrinterJob dlGr = new FPrinterJob("relatorios/RelUF.jasper", "UF", null, rs, null, this);
 
-		if ( bVisualizar==TYPE_PRINT.VIEW ) {
-			dlGr.setVisible( true );
-		}
-		else {
+		if (bVisualizar == TYPE_PRINT.VIEW) {
+			dlGr.setVisible(true);
+		} else {
 			try {
-				JasperPrintManager.printReport( dlGr.getRelatorio(), true );
-			} catch ( Exception err ) {
-				Funcoes.mensagemErro( this, "Erro na impressão de relatório de UF!" + err.getMessage(), true, con, err );
+				JasperPrintManager.printReport(dlGr.getRelatorio(), true);
+			} catch (Exception err) {
+				Funcoes.mensagemErro(this, "Erro na impressão de relatório de UF!" + err.getMessage(), true, con, err);
 			}
 		}
 	}
 
-	public void setConexao( DbConnection cn ) {
+	public void setConexao(DbConnection cn) {
 
-		super.setConexao( cn );
-		lcPais.setConexao( cn );
+		super.setConexao(cn);
+		lcPais.setConexao(cn);
 	}
 }

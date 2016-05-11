@@ -37,34 +37,34 @@ public class DLAtualiza extends FFDialogo {
 
 	private static final long serialVersionUID = 1L;
 
-	public DLAtualiza( Component cOrig ) {
+	public DLAtualiza(Component cOrig) {
 
-		super( cOrig );
-		setTitulo( "Atualização do sistema" );
-		setAtribos( 450, 300 );
+		super(cOrig);
+		setTitulo("Atualização do sistema");
+		setAtribos(450, 300);
 
 	}
 
-	public void actionPerformed( ActionEvent evt ) {
+	public void actionPerformed(ActionEvent evt) {
 
-		if ( evt.getSource() == btOK ) {
+		if (evt.getSource() == btOK) {
 			try {
 				String sColumns = "";
 				Statement stmt = con.createStatement();
-				ResultSet rs = stmt.executeQuery( "SELECT * FROM VDTIPOCLI" );
+				ResultSet rs = stmt.executeQuery("SELECT * FROM VDTIPOCLI");
 				ResultSetMetaData rsmd = rs.getMetaData();
 				int numberOfColumns = rsmd.getColumnCount();
-				for ( int i = 1; i <= numberOfColumns; i++ ) {
-					sColumns = sColumns + rsmd.getColumnName( i ) + ", ";
+				for (int i = 1; i <= numberOfColumns; i++) {
+					sColumns = sColumns + rsmd.getColumnName(i) + ", ";
 				}
-				Funcoes.mensagemErro( this, "Núm. de cols.: " + numberOfColumns );
-				Funcoes.mensagemErro( this, "Colunas: \n" + sColumns );
+				Funcoes.mensagemErro(this, "Núm. de cols.: " + numberOfColumns);
+				Funcoes.mensagemErro(this, "Colunas: \n" + sColumns);
 				// boolean b = rsmd.isSearchable(1);
-			} catch ( SQLException e ) {
-				Funcoes.mensagemErro( this, "Erro: " + e.getMessage() );
+			} catch (SQLException e) {
+				Funcoes.mensagemErro(this, "Erro: " + e.getMessage());
 			}
 
 		}
-		super.actionPerformed( evt );
+		super.actionPerformed(evt);
 	}
 }

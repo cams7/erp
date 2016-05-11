@@ -36,7 +36,7 @@ public class DLRTarefa extends FFDialogo {
 
 	private JRadioGroup<?, ?> rgOrdem = null;
 
-	private JLabelPad lbOrdem = new JLabelPad( "Ordenar por:" );
+	private JLabelPad lbOrdem = new JLabelPad("Ordenar por:");
 
 	private Vector<String> vLabs = new Vector<String>();
 
@@ -44,25 +44,25 @@ public class DLRTarefa extends FFDialogo {
 
 	public DLRTarefa() {
 
-		super( Aplicativo.telaPrincipal );
-		setTitulo( "Ordem do Relatório" );
-		setAtribos( 300, 120 );
-		vLabs.addElement( "Código" );
-		vLabs.addElement( "Descrição" );
-		vVals.addElement( "C" );
-		vVals.addElement( "D" );
-		rgOrdem = new JRadioGroup<String, String>( 1, 2, vLabs, vVals );
-		rgOrdem.setVlrString( "D" );
-		adic( lbOrdem, 7, 0, 80, 15 );
-		adic( rgOrdem, 7, 20, 280, 30 );
+		super(Aplicativo.telaPrincipal);
+		setTitulo("Ordem do Relatório");
+		setAtribos(300, 120);
+		vLabs.addElement("Código");
+		vLabs.addElement("Descrição");
+		vVals.addElement("C");
+		vVals.addElement("D");
+		rgOrdem = new JRadioGroup<String, String>(1, 2, vLabs, vVals);
+		rgOrdem.setVlrString("D");
+		adic(lbOrdem, 7, 0, 80, 15);
+		adic(rgOrdem, 7, 20, 280, 30);
 	}
 
 	public String getValor() {
 
 		String sRetorno = "";
-		if ( rgOrdem.getVlrString().compareTo( "C" ) == 0 )
+		if (rgOrdem.getVlrString().compareTo("C") == 0)
 			sRetorno = "CODTAREFA";
-		else if ( rgOrdem.getVlrString().compareTo( "D" ) == 0 )
+		else if (rgOrdem.getVlrString().compareTo("D") == 0)
 			sRetorno = "DESCTAREFA";
 		return sRetorno;
 	}

@@ -31,19 +31,19 @@ public class FAjustaSeq extends FDados {
 
 	private static final long serialVersionUID = 1L;
 
-	private JTextFieldPad txtSgTab = new JTextFieldPad( JTextFieldPad.TP_STRING, 2, 0 );
+	private JTextFieldPad txtSgTab = new JTextFieldPad(JTextFieldPad.TP_STRING, 2, 0);
 
-	private JTextFieldPad txtNroSeq = new JTextFieldPad( JTextFieldPad.TP_INTEGER, 8, 0 );
+	private JTextFieldPad txtNroSeq = new JTextFieldPad(JTextFieldPad.TP_INTEGER, 8, 0);
 
 	public FAjustaSeq() {
 
 		super();
-		setTitulo( "Ajusta sequencia" );
-		setAtribos( 50, 50, 350, 150 );
+		setTitulo("Ajusta sequencia");
+		setAtribos(50, 50, 350, 150);
 
-		adicCampo( txtSgTab, 7, 20, 50, 20, "SgTab", "Sigla", ListaCampos.DB_PK, true );
-		adicCampo( txtNroSeq, 60, 20, 80, 20, "NroSeq", "Sequencia", ListaCampos.DB_SI, true );
-		lcCampos.montaSql( false, "SEQUENCIA", "SG" );
+		adicCampo(txtSgTab, 7, 20, 50, 20, "SgTab", "Sigla", ListaCampos.DB_PK, true);
+		adicCampo(txtNroSeq, 60, 20, 80, 20, "NroSeq", "Sequencia", ListaCampos.DB_SI, true);
+		lcCampos.montaSql(false, "SEQUENCIA", "SG");
 
 	}
 

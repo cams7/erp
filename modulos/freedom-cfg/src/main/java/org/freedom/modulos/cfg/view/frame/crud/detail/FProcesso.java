@@ -49,19 +49,19 @@ public class FProcesso extends FDetalhe implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	private JTextFieldPad txtCodProc = new JTextFieldPad( JTextFieldPad.TP_INTEGER, 5, 0 );
+	private JTextFieldPad txtCodProc = new JTextFieldPad(JTextFieldPad.TP_INTEGER, 5, 0);
 
-	private JTextFieldPad txtDescProc = new JTextFieldPad( JTextFieldPad.TP_STRING, 50, 0 );
+	private JTextFieldPad txtDescProc = new JTextFieldPad(JTextFieldPad.TP_STRING, 50, 0);
 
-	private JTextFieldPad txtCodTar = new JTextFieldPad( JTextFieldPad.TP_INTEGER, 8, 0 );
+	private JTextFieldPad txtCodTar = new JTextFieldPad(JTextFieldPad.TP_INTEGER, 8, 0);
 
-	private JTextFieldFK txtDescTar = new JTextFieldFK( JTextFieldPad.TP_STRING, 50, 0 );
+	private JTextFieldFK txtDescTar = new JTextFieldFK(JTextFieldPad.TP_STRING, 50, 0);
 
-	private JTextFieldPad txtCodItem = new JTextFieldPad( JTextFieldPad.TP_INTEGER, 8, 0 );
+	private JTextFieldPad txtCodItem = new JTextFieldPad(JTextFieldPad.TP_INTEGER, 8, 0);
 
-	private ListaCampos lcTarefa = new ListaCampos( this, "TA" );
+	private ListaCampos lcTarefa = new ListaCampos(this, "TA");
 
-	private JButtonPad btTrat = new JButtonPad( Icone.novo( "btRetorno.png" ) );
+	private JButtonPad btTrat = new JButtonPad(Icone.novo("btRetorno.png"));
 
 	private JPanelPad pinCab = new JPanelPad();
 
@@ -69,86 +69,85 @@ public class FProcesso extends FDetalhe implements ActionListener {
 
 	public FProcesso() {
 
-		btTrat.setToolTipText( "Tratamento de Retorno" );
+		btTrat.setToolTipText("Tratamento de Retorno");
 
-		setTitulo( "Cadastro Processos" );
-		setAtribos( 50, 50, 450, 350 );
+		setTitulo("Cadastro Processos");
+		setAtribos(50, 50, 450, 350);
 
-		setAltCab( 90 );
-		pinCab = new JPanelPad( 420, 90 );
-		setListaCampos( lcCampos );
-		setPainel( pinCab, pnCliCab );
+		setAltCab(90);
+		pinCab = new JPanelPad(420, 90);
+		setListaCampos(lcCampos);
+		setPainel(pinCab, pnCliCab);
 
-		lcTarefa.add( new GuardaCampo( txtCodTar, "CodTarefa", "Cód.tarfa", ListaCampos.DB_PK, true ) );
-		lcTarefa.add( new GuardaCampo( txtDescTar, "DescTarefa", "Descrição da tarefa", ListaCampos.DB_SI, false ) );
-		lcTarefa.montaSql( false, "TAREFA", "SG" );
-		lcTarefa.setQueryCommit( false );
-		lcTarefa.setReadOnly( true );
-		txtCodTar.setTabelaExterna( lcTarefa, FTarefa.class.getCanonicalName() );
+		lcTarefa.add(new GuardaCampo(txtCodTar, "CodTarefa", "Cód.tarfa", ListaCampos.DB_PK, true));
+		lcTarefa.add(new GuardaCampo(txtDescTar, "DescTarefa", "Descrição da tarefa", ListaCampos.DB_SI, false));
+		lcTarefa.montaSql(false, "TAREFA", "SG");
+		lcTarefa.setQueryCommit(false);
+		lcTarefa.setReadOnly(true);
+		txtCodTar.setTabelaExterna(lcTarefa, FTarefa.class.getCanonicalName());
 
-		adicCampo( txtCodProc, 7, 20, 70, 20, "CodProc", "Cód.proc.", ListaCampos.DB_PK, true );
-		adicCampo( txtDescProc, 80, 20, 230, 20, "DescProc", "Descrição do precesso", ListaCampos.DB_SI, true );
-		setListaCampos( true, "PROCESSO", "SG" );
+		adicCampo(txtCodProc, 7, 20, 70, 20, "CodProc", "Cód.proc.", ListaCampos.DB_PK, true);
+		adicCampo(txtDescProc, 80, 20, 230, 20, "DescProc", "Descrição do precesso", ListaCampos.DB_SI, true);
+		setListaCampos(true, "PROCESSO", "SG");
 
-		setAltDet( 60 );
-		setPainel( pinDet, pnDet );
-		setListaCampos( lcDet );
-		setNavegador( navRod );
+		setAltDet(60);
+		setPainel(pinDet, pnDet);
+		setListaCampos(lcDet);
+		setNavegador(navRod);
 
-		adicCampo( txtCodItem, 7, 20, 40, 20, "SeqItProc", "Item", ListaCampos.DB_PK, true );
-		adicCampo( txtCodTar, 50, 20, 77, 20, "CodTarefa", "Cód.tarefa", ListaCampos.DB_FK, txtDescTar, true );
-		adicDescFK( txtDescTar, 130, 20, 200, 20, "DescTar", "Descrição da tarefa" );
-		setListaCampos( true, "ITPROCESSO", "SG" );
+		adicCampo(txtCodItem, 7, 20, 40, 20, "SeqItProc", "Item", ListaCampos.DB_PK, true);
+		adicCampo(txtCodTar, 50, 20, 77, 20, "CodTarefa", "Cód.tarefa", ListaCampos.DB_FK, txtDescTar, true);
+		adicDescFK(txtDescTar, 130, 20, 200, 20, "DescTar", "Descrição da tarefa");
+		setListaCampos(true, "ITPROCESSO", "SG");
 
-		adic( btTrat, 340, 15, 60, 30 );
+		adic(btTrat, 340, 15, 60, 30);
 
 		montaTab();
-		tab.setTamColuna( 40, 0 );
-		tab.setTamColuna( 80, 1 );
-		tab.setTamColuna( 200, 2 );
+		tab.setTamColuna(40, 0);
+		tab.setTamColuna(80, 1);
+		tab.setTamColuna(200, 2);
 
-		btImp.addActionListener( this );
-		btPrevimp.addActionListener( this );
-		btTrat.addActionListener( this );
-		setImprimir( true );
+		btImp.addActionListener(this);
+		btPrevimp.addActionListener(this);
+		btTrat.addActionListener(this);
+		setImprimir(true);
 	}
 
 	private void abreTrat() {
 
-		if ( fPrim.temTela( "Orcamento" ) == false ) {
-			FTratRet tela = new FTratRet( txtCodProc.getVlrInteger().intValue(), txtCodItem.getVlrInteger().intValue() );
-			fPrim.criatela( "Orcamento", tela, con );
-			tela.setConexao( con );
+		if (fPrim.temTela("Orcamento") == false) {
+			FTratRet tela = new FTratRet(txtCodProc.getVlrInteger().intValue(), txtCodItem.getVlrInteger().intValue());
+			fPrim.criatela("Orcamento", tela, con);
+			tela.setConexao(con);
 		}
 	}
 
-	public void actionPerformed( ActionEvent evt ) {
+	public void actionPerformed(ActionEvent evt) {
 
-		if ( evt.getSource() == btPrevimp ) {
-			imprimir( TYPE_PRINT.VIEW );
-		}
-		else if ( evt.getSource() == btImp )
-			imprimir( TYPE_PRINT.PRINT);
-		else if ( evt.getSource() == btTrat )
+		if (evt.getSource() == btPrevimp) {
+			imprimir(TYPE_PRINT.VIEW);
+		} else if (evt.getSource() == btImp)
+			imprimir(TYPE_PRINT.PRINT);
+		else if (evt.getSource() == btTrat)
 			abreTrat();
-		super.actionPerformed( evt );
+		super.actionPerformed(evt);
 	}
 
-	public void setConexao( DbConnection cn ) {
+	public void setConexao(DbConnection cn) {
 
-		lcTarefa.setConexao( cn );
-		super.setConexao( cn );
+		lcTarefa.setConexao(cn);
+		super.setConexao(cn);
 	}
 
-	private void imprimir( TYPE_PRINT bVisualizar ) {
+	private void imprimir(TYPE_PRINT bVisualizar) {
 
-		ImprimeOS imp = new ImprimeOS( "", con );
+		ImprimeOS imp = new ImprimeOS("", con);
 		int linPag = imp.verifLinPag() - 1;
 		imp.montaCab();
-		imp.setTitulo( "Relatório de Processos" );
+		imp.setTitulo("Relatório de Processos");
 		DLRProcesso dl = new DLRProcesso();
-		dl.setVisible( true );
-		if ( dl.OK == false ) {
+		dl.setVisible(true);
+		if (dl.OK == false) {
 			dl.dispose();
 			return;
 		}
@@ -156,30 +155,30 @@ public class FProcesso extends FDetalhe implements ActionListener {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			ps = con.prepareStatement( sSQL );
+			ps = con.prepareStatement(sSQL);
 			rs = ps.executeQuery();
 			imp.limpaPags();
-			while ( rs.next() ) {
-				if ( imp.pRow() == 0 ) {
-					imp.impCab( 80, false );
-					imp.say( imp.pRow() + 0, 0, "" + imp.normal() );
-					imp.say( imp.pRow() + 0, 0, "" );
-					imp.say( imp.pRow() + 0, 2, "Código" );
-					imp.say( imp.pRow() + 0, 25, "Descrição" );
-					imp.say( imp.pRow() + 1, 0, "" + imp.normal() );
-					imp.say( imp.pRow() + 0, 0, StringFunctions.replicate( "-", 79 ) );
+			while (rs.next()) {
+				if (imp.pRow() == 0) {
+					imp.impCab(80, false);
+					imp.say(imp.pRow() + 0, 0, "" + imp.normal());
+					imp.say(imp.pRow() + 0, 0, "");
+					imp.say(imp.pRow() + 0, 2, "Código");
+					imp.say(imp.pRow() + 0, 25, "Descrição");
+					imp.say(imp.pRow() + 1, 0, "" + imp.normal());
+					imp.say(imp.pRow() + 0, 0, StringFunctions.replicate("-", 79));
 				}
-				imp.say( imp.pRow() + 1, 0, "" + imp.normal() );
-				imp.say( imp.pRow() + 0, 2, rs.getString( "CodProc" ) );
-				imp.say( imp.pRow() + 0, 25, rs.getString( "DescProc" ) );
-				if ( imp.pRow() >= linPag ) {
+				imp.say(imp.pRow() + 1, 0, "" + imp.normal());
+				imp.say(imp.pRow() + 0, 2, rs.getString("CodProc"));
+				imp.say(imp.pRow() + 0, 25, rs.getString("DescProc"));
+				if (imp.pRow() >= linPag) {
 					imp.incPags();
 					imp.eject();
 				}
 			}
 
-			imp.say( imp.pRow() + 1, 0, "" + imp.normal() );
-			imp.say( imp.pRow() + 0, 0, StringFunctions.replicate( "=", 79 ) );
+			imp.say(imp.pRow() + 1, 0, "" + imp.normal());
+			imp.say(imp.pRow() + 0, 0, StringFunctions.replicate("=", 79));
 			imp.eject();
 
 			imp.fechaGravacao();
@@ -188,14 +187,13 @@ public class FProcesso extends FDetalhe implements ActionListener {
 			// ps.close();
 			con.commit();
 			dl.dispose();
-		} catch ( SQLException err ) {
-			Funcoes.mensagemErro( this, "Erro na consulta na tabela de Processos!\n" + err.getMessage(), true, con, err );
+		} catch (SQLException err) {
+			Funcoes.mensagemErro(this, "Erro na consulta na tabela de Processos!\n" + err.getMessage(), true, con, err);
 		}
 
-		if ( bVisualizar==TYPE_PRINT.VIEW ) {
-			imp.preview( this );
-		}
-		else {
+		if (bVisualizar == TYPE_PRINT.VIEW) {
+			imp.preview(this);
+		} else {
 			imp.print();
 		}
 	}

@@ -45,89 +45,89 @@ public class FObjetoTb extends FDetalhe implements InsertListener, ActionListene
 
 	private JPanelPad pinDet = new JPanelPad();
 
-	private JTextFieldPad txtIDObj = new JTextFieldPad( JTextFieldPad.TP_STRING, 30, 0 );
+	private JTextFieldPad txtIDObj = new JTextFieldPad(JTextFieldPad.TP_STRING, 30, 0);
 
-	private JTextFieldPad txtDescObj = new JTextFieldPad( JTextFieldPad.TP_STRING, 50, 0 );
+	private JTextFieldPad txtDescObj = new JTextFieldPad(JTextFieldPad.TP_STRING, 50, 0);
 
-	private JTextFieldPad txtCodTb = new JTextFieldPad( JTextFieldPad.TP_INTEGER, 5, 0 );
+	private JTextFieldPad txtCodTb = new JTextFieldPad(JTextFieldPad.TP_INTEGER, 5, 0);
 
-	private JTextFieldFK txtDescTb = new JTextFieldFK( JTextFieldPad.TP_STRING, 50, 0 );
+	private JTextFieldFK txtDescTb = new JTextFieldFK(JTextFieldPad.TP_STRING, 50, 0);
 
 	private JCheckBoxPad cbRequerido = null;
 
-	private ListaCampos lcTabela = new ListaCampos( this, "TB" );
+	private ListaCampos lcTabela = new ListaCampos(this, "TB");
 
 	public FObjetoTb() {
 
-		lcCampos.setUsaFI( false );
-		lcDet.setUsaFI( false );
+		lcCampos.setUsaFI(false);
+		lcDet.setUsaFI(false);
 
-		setTitulo( "Vinculo entre tabelas físicas e auxiliares" );
-		setAtribos( 50, 20, 500, 350 );
-		setAltCab( 90 );
-		pinCab = new JPanelPad( 500, 90 );
+		setTitulo("Vinculo entre tabelas físicas e auxiliares");
+		setAtribos(50, 20, 500, 350);
+		setAltCab(90);
+		pinCab = new JPanelPad(500, 90);
 
-		txtDescObj.setAtivo( false );
+		txtDescObj.setAtivo(false);
 
-		lcTabela.add( new GuardaCampo( txtCodTb, "CODTB", "Cód.tab.", ListaCampos.DB_PK, txtDescTb, false ) );
-		lcTabela.add( new GuardaCampo( txtDescTb, "DESCTB", "Descriçao da tabela", ListaCampos.DB_SI, false ) );
-		lcTabela.setReadOnly( true );
-		lcTabela.montaSql( false, "TABELA", "SG" );
-		lcTabela.setQueryCommit( false );
+		lcTabela.add(new GuardaCampo(txtCodTb, "CODTB", "Cód.tab.", ListaCampos.DB_PK, txtDescTb, false));
+		lcTabela.add(new GuardaCampo(txtDescTb, "DESCTB", "Descriçao da tabela", ListaCampos.DB_SI, false));
+		lcTabela.setReadOnly(true);
+		lcTabela.montaSql(false, "TABELA", "SG");
+		lcTabela.setQueryCommit(false);
 
-		txtCodTb.setTabelaExterna( lcTabela, FTabela.class.getCanonicalName() );
-		txtCodTb.setNomeCampo( "CODTB" );
+		txtCodTb.setTabelaExterna(lcTabela, FTabela.class.getCanonicalName());
+		txtCodTb.setNomeCampo("CODTB");
 
-		setListaCampos( lcCampos );
-		setPainel( pinCab, pnCliCab );
+		setListaCampos(lcCampos);
+		setPainel(pinCab, pnCliCab);
 
-		adicCampo( txtIDObj, 7, 20, 100, 20, "IDObj", "Id.obj.", ListaCampos.DB_PK, true );
-		adicCampo( txtDescObj, 110, 20, 350, 20, "DescObj", "Descrição do objeto", ListaCampos.DB_SI, true );
-		lcCampos.setReadOnly( true );
-		lcCampos.setQueryInsert( false );
-		setListaCampos( false, "OBJETO", "SG" );
+		adicCampo(txtIDObj, 7, 20, 100, 20, "IDObj", "Id.obj.", ListaCampos.DB_PK, true);
+		adicCampo(txtDescObj, 110, 20, 350, 20, "DescObj", "Descrição do objeto", ListaCampos.DB_SI, true);
+		lcCampos.setReadOnly(true);
+		lcCampos.setQueryInsert(false);
+		setListaCampos(false, "OBJETO", "SG");
 
-		setAltDet( 60 );
-		pinDet = new JPanelPad( 590, 110 );
-		setPainel( pinDet, pnDet );
-		setListaCampos( lcDet );
-		setNavegador( navRod );
+		setAltDet(60);
+		pinDet = new JPanelPad(590, 110);
+		setPainel(pinDet, pnDet);
+		setListaCampos(lcDet);
+		setNavegador(navRod);
 
-		cbRequerido = new JCheckBoxPad( "Requerido", "S", "N" );
-		cbRequerido.setVlrString( "N" );
+		cbRequerido = new JCheckBoxPad("Requerido", "S", "N");
+		cbRequerido.setVlrString("N");
 
-		adicCampo( txtCodTb, 7, 20, 70, 20, "CODTB", "Cód.tabela", ListaCampos.DB_PF, txtDescTb, true );
-		adicDescFK( txtDescTb, 80, 20, 280, 20, "DESCTB", "Descrição da tabela" );
-		adicDB( cbRequerido, 365, 20, 90, 20, "ObrigObjTb", "", true );
-		setListaCampos( false, "OBJETOTB", "SG" );
-		lcCampos.setQueryInsert( false );
+		adicCampo(txtCodTb, 7, 20, 70, 20, "CODTB", "Cód.tabela", ListaCampos.DB_PF, txtDescTb, true);
+		adicDescFK(txtDescTb, 80, 20, 280, 20, "DESCTB", "Descrição da tabela");
+		adicDB(cbRequerido, 365, 20, 90, 20, "ObrigObjTb", "", true);
+		setListaCampos(false, "OBJETOTB", "SG");
+		lcCampos.setQueryInsert(false);
 		montaTab();
 
-		tab.setTamColuna( 50, 0 );
-		tab.setTamColuna( 415, 1 );
-		tab.setTamColuna( 30, 2 );
+		tab.setTamColuna(50, 0);
+		tab.setTamColuna(415, 1);
+		tab.setTamColuna(30, 2);
 
-		lcCampos.addInsertListener( this );
-		btImp.addActionListener( this );
-		btPrevimp.addActionListener( this );
+		lcCampos.addInsertListener(this);
+		btImp.addActionListener(this);
+		btPrevimp.addActionListener(this);
 	}
 
-	public void setConexao( DbConnection cn ) {
+	public void setConexao(DbConnection cn) {
 
-		lcTabela.setConexao( cn );
-		super.setConexao( cn );
+		lcTabela.setConexao(cn);
+		super.setConexao(cn);
 	}
 
-	public void actionPerformed( ActionEvent evt ) {
+	public void actionPerformed(ActionEvent evt) {
 
-		super.actionPerformed( evt );
+		super.actionPerformed(evt);
 	}
 
-	public void afterInsert( InsertEvent ievt ) {
+	public void afterInsert(InsertEvent ievt) {
 
 	}
 
-	public void beforeInsert( InsertEvent ievt ) {
+	public void beforeInsert(InsertEvent ievt) {
 
 	}
 
