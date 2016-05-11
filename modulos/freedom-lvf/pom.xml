@@ -27,6 +27,10 @@
 		<dependency>
 			<groupId>br.com.cams7.erp</groupId>
 			<artifactId>freedom</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>br.com.cams7.erp</groupId>
+			<artifactId>freedom-common</artifactId>
 		</dependency>		
 	</dependencies>
 

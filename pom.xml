@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>br.com.cams7.erp</groupId>	
+	<groupId>br.com.cams7.erp</groupId>
 	<version>1.2.6.5</version>
 	<artifactId>freedom-erp</artifactId>
 
@@ -10,7 +10,7 @@
 	<description></description>
 
 	<packaging>pom</packaging>
-		
+
 	<url>https://github.com/cams7/erp/tree/master</url>
 	<scm>
 		<connection>scm:git:https://github.com/cams7/erp.git</connection>
@@ -20,15 +20,15 @@
 		<user.name>César Magalhães</user.name>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.build.timestamp.format>yyyyMMdd'T'HHmmss</maven.build.timestamp.format>
-		
+
 		<mail.version>1.4.7</mail.version>
-		<!--mail.version>1.5.5</mail.version-->
+		<!--mail.version>1.5.5</mail.version -->
 		<poi.version>3.13</poi.version>
-		
+
 		<dependency.jars>../../project-libs</dependency.jars>
-		<!--dependency.jars>lib</dependency.jars-->
+		<!--dependency.jars>lib</dependency.jars -->
 	</properties>
-	
+
 	<modules>
 		<module>freedom-infra</module>
 		<module>freedom-nfe</module>
@@ -39,7 +39,7 @@
 	</modules>
 
 	<dependencyManagement>
-		<dependencies>			
+		<dependencies>
 			<dependency>
 				<groupId>br.com.cams7.erp</groupId>
 				<artifactId>freedom-infra</artifactId>
@@ -70,7 +70,86 @@
 				<version>${project.version}</version>
 				<type>jar</type>
 			</dependency>
-								
+			<!-- Módulos -->
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-atd</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-cfg</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-crm</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-fnc</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-gms</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-gpe</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-grh</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-lvf</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-pcp</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-pdv</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-rep</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-std</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>br.com.cams7.erp</groupId>
+				<artifactId>freedom-common</artifactId>
+				<version>${project.version}</version>
+				<type>jar</type>
+			</dependency>
+
 			<dependency>
 				<groupId>commons-beanutils</groupId>
 				<artifactId>commons-beanutils</artifactId>
@@ -96,22 +175,16 @@
 				<artifactId>xml-apis</artifactId>
 				<version>2.0.2</version>
 			</dependency>
-			
-			<!--dependency>
-				<groupId>javax.mail</groupId>
-				<artifactId>mailapi</artifactId>
-				<version>1.4.3</version>
-			</dependency-->
+
+			<!--dependency> <groupId>javax.mail</groupId> <artifactId>mailapi</artifactId> 
+				<version>1.4.3</version> </dependency -->
 			<dependency>
 				<groupId>com.sun.mail</groupId>
 				<artifactId>mailapi</artifactId>
 				<version>${mail.version}</version>
 			</dependency>
-			<!--dependency>
-				<groupId>javax.mail</groupId>
-				<artifactId>mail</artifactId>
-				<version>1.4.7</version>
-			</dependency-->
+			<!--dependency> <groupId>javax.mail</groupId> <artifactId>mail</artifactId> 
+				<version>1.4.7</version> </dependency -->
 			<dependency>
 				<groupId>com.sun.mail</groupId>
 				<artifactId>javax.mail</artifactId>
@@ -121,13 +194,13 @@
 				<groupId>com.sun.mail</groupId>
 				<artifactId>smtp</artifactId>
 				<version>${mail.version}</version>
-				<!--version>1.5.5</version-->
+				<!--version>1.5.5</version -->
 			</dependency>
 			<dependency>
 				<groupId>com.sun.mail</groupId>
 				<artifactId>pop3</artifactId>
 				<version>${mail.version}</version>
-			</dependency>	
+			</dependency>
 			<dependency>
 				<groupId>com.sun.mail</groupId>
 				<artifactId>imap</artifactId>
@@ -143,7 +216,7 @@
 				<artifactId>saaj-impl</artifactId>
 				<version>1.3</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>net.sf.jasperreports</groupId>
 				<artifactId>jasperreports</artifactId>
@@ -159,27 +232,21 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			<!--dependency>
-				<groupId>jasperreports</groupId>
-				<artifactId>jasperreports</artifactId>
-				<version>3.5.3</version>
-			</dependency-->
-			<!--dependency>
-				<groupId>net.sf.jasperreports</groupId>
-				<artifactId>jasperreports-fonts</artifactId>
-				<version>4.0.0</version>
-			</dependency-->
+			<!--dependency> <groupId>jasperreports</groupId> <artifactId>jasperreports</artifactId> 
+				<version>3.5.3</version> </dependency -->
+			<!--dependency> <groupId>net.sf.jasperreports</groupId> <artifactId>jasperreports-fonts</artifactId> 
+				<version>4.0.0</version> </dependency -->
 			<dependency>
 				<groupId>org.codehaus.groovy</groupId>
 				<artifactId>groovy</artifactId>
-				<!--version>1.7.11</version-->
+				<!--version>1.7.11</version -->
 				<version>2.4.6</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.firebirdsql.jdbc</groupId>
 				<artifactId>jaybird</artifactId>
-				<!--version>2.2.5</version-->
+				<!--version>2.2.5</version -->
 				<version>2.1.6</version>
 				<exclusions>
 					<exclusion>
@@ -188,32 +255,32 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.apache.poi</groupId>
 				<artifactId>poi</artifactId>
-				<!--version>3.2-FINAL</version-->
+				<!--version>3.2-FINAL</version -->
 				<version>${poi.version}</version>
-			</dependency>			
+			</dependency>
 			<dependency>
 				<groupId>org.apache.poi</groupId>
 				<artifactId>poi-ooxml</artifactId>
-				<!--version>3.9</version-->
+				<!--version>3.9</version -->
 				<version>${poi.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.poi</groupId>
 				<artifactId>poi-ooxml-schemas</artifactId>
-				<!--version>3.9</version-->
+				<!--version>3.9</version -->
 				<version>${poi.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.poi</groupId>
 				<artifactId>poi-contrib</artifactId>
-				<!--version>3.2-FINAL</version-->
+				<!--version>3.2-FINAL</version -->
 				<version>3.6</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.swinglabs</groupId>
 				<artifactId>swingx</artifactId>
@@ -224,7 +291,7 @@
 				<artifactId>swingx-ws</artifactId>
 				<version>1.0</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>net.sf.jxls</groupId>
 				<artifactId>jxls-core</artifactId>
@@ -235,7 +302,7 @@
 				<artifactId>jxls-reader</artifactId>
 				<version>1.0.6</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>javax.media</groupId>
 				<artifactId>jmf</artifactId>
@@ -255,7 +322,7 @@
 				<groupId>softwareexpress.sitef</groupId>
 				<artifactId>jclisitef</artifactId>
 				<version>NOT_INFORMED</version>
-			</dependency>					
+			</dependency>
 			<dependency>
 				<groupId>org.apache.axis</groupId>
 				<artifactId>axis</artifactId>
@@ -270,7 +337,7 @@
 				<groupId>com.toedter</groupId>
 				<artifactId>jcalendar</artifactId>
 				<version>1.4</version>
-			</dependency>			
+			</dependency>
 			<dependency>
 				<groupId>org.mnode.ical4j</groupId>
 				<artifactId>ical4j</artifactId>
@@ -281,12 +348,9 @@
 				<artifactId>jaxrpc</artifactId>
 				<version>1.1</version>
 			</dependency>
-			
-			<!--dependency>
-				<groupId>commons-discovery</groupId>
-				<artifactId>commons-discovery</artifactId>
-				<version>0.5</version>
-			</dependency-->
+
+			<!--dependency> <groupId>commons-discovery</groupId> <artifactId>commons-discovery</artifactId> 
+				<version>0.5</version> </dependency -->
 			<dependency>
 				<groupId>bizcal</groupId>
 				<artifactId>bizcal</artifactId>
@@ -307,23 +371,17 @@
 				<artifactId>santec</artifactId>
 				<version>NOT_INFORMED</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>info.clearthought</groupId>
 				<artifactId>table-layout</artifactId>
 				<version>4.2.2</version>
-				<!--version>4.3.0</version-->
+				<!--version>4.3.0</version -->
 			</dependency>
-			<!--dependency>
-				<groupId>org.codehaus.castor</groupId>
-				<artifactId>castor</artifactId>
-				<version>1.2</version>
-			</dependency-->
-			<!--dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>2.5.6.SEC03</version>
-			</dependency-->
+			<!--dependency> <groupId>org.codehaus.castor</groupId> <artifactId>castor</artifactId> 
+				<version>1.2</version> </dependency -->
+			<!--dependency> <groupId>org.springframework</groupId> <artifactId>spring-beans</artifactId> 
+				<version>2.5.6.SEC03</version> </dependency -->
 			<dependency>
 				<groupId>net.sf.squirrel-sql.thirdparty-non-maven</groupId>
 				<artifactId>metouia</artifactId>
@@ -339,23 +397,20 @@
 				<artifactId>squareness</artifactId>
 				<version>NOT_INFORMED</version>
 			</dependency>
-			<!--dependency>
-				<groupId>org.eclipse.jdt.core.compiler</groupId>
-				<artifactId>jdt-compiler</artifactId>
-				<version>NOT_INFORMED</version>
-			</dependency-->
+			<!--dependency> <groupId>org.eclipse.jdt.core.compiler</groupId> <artifactId>jdt-compiler</artifactId> 
+				<version>NOT_INFORMED</version> </dependency -->
 		</dependencies>
 	</dependencyManagement>
 
-	<dependencies>		
+	<dependencies>
 	</dependencies>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
-		
+
 		<pluginManagement>
 			<plugins>
-				<!--JDK do projeto-->
+				<!--JDK do projeto -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -365,16 +420,14 @@
 						<target>1.8</target>
 					</configuration>
 				</plugin>
-				
-				<!--Gera algumas informações no arquivo MANIFEST.MF do projeto-->
+
+				<!--Gera algumas informações no arquivo MANIFEST.MF do projeto -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>2.6</version>
 					<configuration>
-						<!--excludes>
-							<exclude>**/log4j.properties</exclude>
-						</excludes-->
+						<!--excludes> <exclude>**/log4j.properties</exclude> </excludes -->
 						<archive>
 							<manifest>
 								<addClasspath>true</addClasspath>
@@ -395,17 +448,17 @@
 						</archive>
 					</configuration>
 				</plugin>
-								
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.19.1</version>
-				</plugin>				
+				</plugin>
 			</plugins>
 		</pluginManagement>
-		
+
 		<plugins>
-			<!--Gera informações do controle de versão-->
+			<!--Gera informações do controle de versão -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>buildnumber-maven-plugin</artifactId>
@@ -419,8 +472,8 @@
 					</execution>
 				</executions>
 			</plugin>
-			
-			<!--Cria os arquivos de configuração do Eclipse-->
+
+			<!--Cria os arquivos de configuração do Eclipse -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -430,18 +483,18 @@
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
-			
-			<!--Pula o teste unitário-->
+
+			<!--Pula o teste unitário -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<skip>true</skip>
 				</configuration>
-			</plugin>			
+			</plugin>
 		</plugins>
 	</build>
-	
+
 	<profiles>
 		<profile>
 			<id>default</id>
@@ -453,7 +506,7 @@
 					<!-- Cópia as depedências para a pasta lib -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>	
+						<artifactId>maven-dependency-plugin</artifactId>
 						<version>2.10</version>
 						<executions>
 							<execution>
@@ -469,7 +522,7 @@
 							</execution>
 						</executions>
 					</plugin>
-				</plugins>			
+				</plugins>
 			</build>
 		</profile>
 	</profiles>

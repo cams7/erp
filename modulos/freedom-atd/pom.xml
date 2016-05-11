@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
-		<groupId>br.com.cams7.erp</groupId>	
+		<groupId>br.com.cams7.erp</groupId>
 		<version>1.2.6.5</version>
 		<artifactId>freedom-modulos</artifactId>
 	</parent>
@@ -19,20 +19,24 @@
 	</properties>
 
 	<dependencyManagement>
-		<dependencies>			
+		<dependencies>
 		</dependencies>
 	</dependencyManagement>
 
-	<dependencies>	
+	<dependencies>
 		<dependency>
 			<groupId>br.com.cams7.erp</groupId>
 			<artifactId>freedom</artifactId>
-		</dependency>		
+		</dependency>
+		<dependency>
+			<groupId>br.com.cams7.erp</groupId>
+			<artifactId>freedom-common</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<finalName>freedomatd</finalName>
-		<plugins>	
+		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>

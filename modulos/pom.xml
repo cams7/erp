@@ -32,6 +32,7 @@
 		<module>freedom-pdv</module>
 		<module>freedom-rep</module>
 		<module>freedom-std</module>
+		<module>freedom-common</module>
 	</modules>
 
 	<dependencyManagement>
