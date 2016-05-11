@@ -62,15 +62,51 @@ Para rodar o programa
 No diretório onde o projeto foi baixado, execute as linhas de comando abaixo:
 	
 	mvn clean install
+	
+_01. Módulo - Atendimento_
+
 	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-atd/target/freedomatd.jar
+	
+_02. Módulo - Configurador do Sistema_
+
 	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-cfg/target/freedomcfg.jar
+	
+_03. Módulo - CRM (Gestão de Relacionamento com o Cliente)_
+
 	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-crm/target/freedomcrm.jar
+	
+_04. Módulo - Financeiro_
+
 	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-fnc/target/freedomfnc.jar
+	
+_05. Módulo - Gestão de Materiais e Serviços_
+
 	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-gms/target/freedomgms.jar
+	
+_06. Módulo - Gestão de Ponto Eletrônico_
+
 	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-gpe/target/freedomgpe.jar
+	
+_07. Módulo - Gestão de Recursos Humanos_
+
 	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-grh/target/freedomgrh.jar
+	
+_08. Módulo - Livros Fiscais_
+
 	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-lvf/target/freedomlvf.jar
+	
+_09. Módulo - Planejamento e Controle da Produção_
+
 	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-pcp/target/freedompcp.jar
+	
+_10. Módulo - Ponto de Venda_
+
 	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-pdv/target/freedompdv.jar
+	
+_11. Módulo - Representações Comerciais_
+
 	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-rep/target/freedomrep.jar
+	
+_12. Módulo - Standard_
+
 	java -DARQINI='/c/opt/freedom/ini/freedom.ini' -jar modulos/freedom-std/target/freedomstd.jar
